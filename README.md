@@ -36,33 +36,33 @@ always feel free to suggest new guidelines and to challenge existing norms with 
 
 ### 1.1. How to collaborate with Git
 
-Git is a collaboration tool that allows self-directed teams to govern product development with team members anywhere in the world. Here are some rules for source code collaboration.
+Git is a collaboration tool that allows self-directed teams to govern product development with team members anywhere in the world. __If your product development team cannot clearly articulate its preferred branching model and how to use it, your team is not ready to open source its product.__
 
 #### ![Source code editor][atom-ide-image] Perform work in a topic branch.
 
-  _Why:_
-  >Use an isolated topic branch for parallel product development. Topic branches allow you to submit multiple pull requests without confusion. You can iterate without polluting the master branch with potentially unstable, unfinished code. [read more...](https://www.atlassian.com/git/tutorials/comparing-workflows#feature-branch-workflow)
+_Why:_
+>Use an isolated topic branch for parallel product development. Topic branches allow you to submit multiple pull requests without confusion. You can iterate without polluting the master branch with potentially unstable, unfinished code. [read more...](https://www.atlassian.com/git/tutorials/comparing-workflows#feature-branch-workflow)
 
 
 #### ![Git fork][git-fork-image] Branch out from `develop`.
 
-  _Why:_
-  >This way, you can make sure that code in master will almost always build without problems, and can be mostly used directly for releases (this might be overkill for some projects).
+_Why:_
+>This way, you can make sure that code in master will almost always build without problems, and can be mostly used directly for releases (this might be overkill for some projects).
 
 #### ![Git forbidden][git-no-entry-image] Never push into `develop` or `master` branch. Make a Pull Request.
 
-  _Why:_
-  > It notifies team members that they have completed a feature. It also enables easy peer-review of the code and dedicates forum for discussing the proposed feature.
+_Why:_
+> It notifies team members that they have completed a feature. It also enables easy peer-review of the code and dedicates forum for discussing the proposed feature.
 
 #### ![Git pull request][git-pull-request-image] Submit a Pull Request as soon as possible.
 
-  _Why:_
-  > Pull Requests declare work in progress. Frequent pushes to a Pull Request notify your team members about change, and gives them the opportunity to provide feedback more often. Pull Request pushes also trigger automated CI-services, which help you fail fast and assess quality.
+_Why:_
+> Pull Requests declare work in progress. Frequent pushes to a Pull Request notify your team members about change, and gives them the opportunity to provide feedback more often. Pull Request pushes also trigger automated CI-services, which help you fail fast and assess quality.
 
 #### ![Git compare][git-compare-image] Update your local `develop` branch with an interactive rebase before you ask for Pull Request approvals.
 
-  _Why:_
-  > Rebasing will merge in the requested branch (`master` or `develop`) and apply the commits that you have made locally to the top of the history without creating a merge commit (assuming there were no conflicts). Resulting in a nice and clean history. [read more ...](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
+_Why:_
+> Rebasing will merge in the requested branch (`master` or `develop`) and apply the commits that you have made locally to the top of the history without creating a merge commit (assuming there were no conflicts). Resulting in a nice and clean history. [read more ...](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
 
 #### ![Git compare][git-resolve-image] Resolve rebase conflicts before Pull Request reviews.
 
@@ -76,23 +76,23 @@ _Why:_
 
 #### ![Git pull request review][git-pr-review-image] Add Reviewers and the Label "Status: Review Needed" when your topic branch is ready for review.
 
-  _Why:_
-  > When you add a Reviewer, GitHub (or Bitbucket) notifies teammates that your topic branch meets all Acceptance Criteria and is ready to be merged into the main branch. Adding the label "Status: Review Needed" formally declares the status of your topic branch, and helps teams filter through issues.
+_Why:_
+> When you add a Reviewer, GitHub (or Bitbucket) notifies teammates that your topic branch meets all Acceptance Criteria and is ready to be merged into the main branch. Adding the label "Status: Review Needed" formally declares the status of your topic branch, and helps teams filter through issues.
 
 #### ![Delete branches][delete-image] Delete local and remote topic branches after merging.
 
-  _Why:_
-  > It will clutter up your list of branches with dead branches.It insures you only ever merge the branch back into (`master` or `develop`) once. topic branches should only exist while the work is still in progress.
+_Why:_
+> It will clutter up your list of branches with dead branches.It insures you only ever merge the branch back into (`master` or `develop`) once. topic branches should only exist while the work is still in progress.
 
 #### ![Ignore extraneous files][git-ignore-image] Use [this](./.gitignore) `.gitignore` file.
 
-  _Why:_
-  > It already has a list of system files that should not be sent with your code into a remote repository. In addition, it excludes setting folders and files for most used editors, as well as most common dependency folders.
+_Why:_
+> It already has a list of system files that should not be sent with your code into a remote repository. In addition, it excludes setting folders and files for most used editors, as well as most common dependency folders.
 
 #### ![Git repo defense][git-repo-protection-image] Protect your `develop` and `master` branches.
 
-  _Why:_
-  > It protects your production-ready branches from receiving unexpected and irreversible changes. read more... [Github](https://help.github.com/articles/about-protected-branches/) and [Bitbucket](https://confluence.atlassian.com/bitbucketserver/using-branch-permissions-776639807.html)
+_Why:_
+> It protects your production-ready branches from receiving unexpected and irreversible changes. read more... [Github](https://help.github.com/articles/about-protected-branches/) and [Bitbucket](https://confluence.atlassian.com/bitbucketserver/using-branch-permissions-776639807.html)
 
 <a name="git-workflow"></a>
 
@@ -418,22 +418,42 @@ test(<scope>): <subject>
 
 ![Documentation](/docs/img/icons8/markdown.png)
 
-[![ScoreMe README.md grade][readme-score-img]][readme-score-url]
+Your repository's `README.md` is your product's home page for consumers and contributors. According to [GitHub's 2017 Open Source Survey][github-open-source-survey-2017-url],
+
+> ![Quote][quote-img] Documentation is highly valued, but often overlooked.
+>
+> Documentation helps orient newcomers: how to use a project, how to contribute back, the terms of use and contribution, and the standards of conduct in a community. Improving that documentation is an impactful way to contribute back to open source.
+>
+> Open Source Survey. (n.d.). Retrieved August 07, 2017, from http://opensourcesurvey.org/2017/
+
+
+
 
 * Use this [template](./README.sample.md) for `README.md`, Feel free to add uncovered sections.
-* Prefer a static document site generator (like GitBook or GitHub Pages) to host your documentation with additional features.
-* When using static document sites, add RunKit blocks so consumers and contributors can execute code samples immediately.
-* For projects with more than one repository, provide links to them in their respective `README.md` files.
-* Keep `README.md` updated as a project evolves.
-* Comment your code with API documentation generator annotations (e.g., JSDoc 3 or ESDoc). Try to make it as clear as possible what you are intending with each major section.
-* If there is an open discussion on github or stackoverflow about the code or approach you're using, include the link in your comment.
-* Don't use comments as an excuse for a bad code. Keep your code clean.
-* Keep comments relevant as your code evolves.
-* Assess your `README.md`'s quality with ScoreMe.
-
+* Assess your `README.md`'s quality with [ScoreMe][readme-score-url], and display that score's badge at the bottom of your `README.md` file. [![ScoreMe README.md grade][readme-score-img]][readme-score-url]
 
   _Why:_
-  > Your repository's `README.md` is your product's home page for consumers and contributors. ScoreMe uses the same calculations as those applied to CocoaPods libraries.
+  > [ScoreMe][readme-score-url] was created by the CocoaPods dependency management team. It automatically generates a README quality score based on objective factors.
+
+* Prefer a static document site generator (like GitBook or GitHub Pages) to host your documentation with additional features like interactive [RunKit notebooks][runkit-url].
+
+_Why_:
+> Static code samples are essential. Interactive code samples allow potential consumers and collaborators to experiment with your product's code without forcing them to install it, first.
+
+* When using static document sites, add RunKit blocks so consumers and contributors can execute code samples immediately.
+
+* For projects with more than one repository, provide links to them in their respective `README.md` files.
+
+* Keep `README.md` updated as a project evolves.
+
+* Comment your code with API documentation generator annotations (e.g., JSDoc 3 or ESDoc). Try to make it as clear as possible what you are intending with each major section.
+
+* If there is an open discussion on github or stackoverflow about the code or approach you're using, include the link in your comment.
+
+* Don't use comments as an excuse for a bad code. Keep your code clean.
+
+* Keep comments relevant as your code evolves.
+
 
 <a name="environments"></a>
 ## 3. Environments
@@ -1055,90 +1075,92 @@ Icons by [icons8](https://icons8.com/)
 [no-8]: /docs/img/icons8/numbers/08.png
 [no-9]: /docs/img/icons8/numbers/09.png
 [no-10]: /docs/img/icons8/numbers/10.png
+[github-open-source-survey-2017-url]: http://opensourcesurvey.org/2017/
+[quote-img]: /docs/img/icons8/quote.png
+[runkit-url]: https://runkit.com/
 
 
-
-[api-docs-url]: https://github.com/gregswindle/generator-apiproxy/docs/API.md
+[api-docs-url]: https://github.com/gregswindle/product-name/docs/API.md
 [apigee-edge-js-url]: http://docs.apigee.com/api-services/reference/javascript-object-model
 [appveyor-img]: https://ci.appveyor.com/api/projects/status/qcsxteena4etjlfe?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/gregswindle/generator-apiproxy
+[appveyor-url]: https://ci.appveyor.com/project/gregswindle/product-name
 [author-url]: https://github.com/gregswindle
-[changelog-url]: https://github.com/gregswindle/generator-apiproxy/blob/master/CHANGELOG.md
+[changelog-url]: https://github.com/gregswindle/product-name/blob/master/CHANGELOG.md
 [codacy-coverage-image]: https://api.codacy.com/project/badge/Coverage/fa4ade3f68a04b9cad26165a59ceb88e
-[codacy-coverage-url]: https://www.codacy.com/app/greg_7/generator-apiproxy?utm_source=github.com&utm_medium=referral&utm_content=gregswindle/generator-apiproxy&utm_campaign=Badge_Coverage
+[codacy-coverage-url]: https://www.codacy.com/app/greg_7/product-name?utm_source=github.com&utm_medium=referral&utm_content=gregswindle/product-name&utm_campaign=Badge_Coverage
 [codacy-img]: https://api.codacy.com/project/badge/Grade/fa4ade3f68a04b9cad26165a59ceb88e
-[codacy-url]: https://www.codacy.com/app/greg_7/generator-apiproxy?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gregswindle/generator-apiproxy&amp;utm_campaign=Badge_Grade
-[code-of-conduct-url]: https://github.com/gregswindle/generator-apiproxy/blob/master/.github/CODE_OF_CONDUCT.md
+[codacy-url]: https://www.codacy.com/app/greg_7/product-name?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gregswindle/product-name&amp;utm_campaign=Badge_Grade
+[code-of-conduct-url]: https://github.com/gregswindle/product-name/blob/master/.github/CODE_OF_CONDUCT.md
 [complexity-report-url]: https://github.com/escomplex/complexity-report
-[coveralls-img]: https://coveralls.io/repos/github/gregswindle/generator-apiproxy/badge.svg?branch=master
-[coveralls-url]: https://coveralls.io/github/gregswindle/generator-apiproxy?branch=master
-[daviddm-dev-image]: https://david-dm.org/gregswindle/generator-apiproxy/dev-status.svg
-[daviddm-dev-url]: https://david-dm.org/gregswindle/generator-apiproxy?type=dev
-[daviddm-image]: https://david-dm.org/gregswindle/generator-apiproxy.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/gregswindle/generator-apiproxy
+[coveralls-img]: https://coveralls.io/repos/github/gregswindle/product-name/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/gregswindle/product-name?branch=master
+[daviddm-dev-image]: https://david-dm.org/gregswindle/product-name/dev-status.svg
+[daviddm-dev-url]: https://david-dm.org/gregswindle/product-name?type=dev
+[daviddm-image]: https://david-dm.org/gregswindle/product-name.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/gregswindle/product-name
 [editorconfig-url]: http://editorconfig.org/
 [eslint-github-url]: https://github.com/eslint/eslint
 [fossa-image]: https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fgenerator-apigee-apiproxy.svg?type=shield
 [fossa-url]: https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fgenerator-apigee-apiproxy?ref=badge_shield
-[greenkeeper-img]: https://badges.greenkeeper.io/gregswindle/generator-apiproxy.svg
+[greenkeeper-img]: https://badges.greenkeeper.io/gregswindle/product-name.svg
 [greenkeeper-url]: https://greenkeeper.io/
-[issues-url]: https://github.com/gregswindle/generator-apiproxy/issues
+[issues-url]: https://github.com/gregswindle/product-name/issues
 [jsdoc2md-url]: https://github.com/jsdoc2md/jsdoc-to-markdown
 [license-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat
-[license-url]: https://github.com/gregswindle/generator-apiproxy/blob/master/LICENSE
+[license-url]: https://github.com/gregswindle/product-name/blob/master/LICENSE
 [lint-def-url]: https://en.wikipedia.org/wiki/Lint_(software)
 [makeapullrequest-image]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat
 [makeapullrequest-url]: http://makeapullrequest.com
-[npm-image]: https://badge.fury.io/js/generator-apiproxy.svg
-[npm-url]: https://npmjs.org/package/generator-apiproxy
+[npm-image]: https://badge.fury.io/js/product-name.svg
+[npm-url]: https://npmjs.org/package/product-name
 [nsp-img]: https://nodesecurity.io/orgs/gregswindle/projects/a3912719-529f-457f-9ff6-53fa70d8f475/badge
 [nsp-url]: https://nodesecurity.io/orgs/gregswindle/projects/a3912719-529f-457f-9ff6-53fa70d8f475
-[pr-url]: https://github.com/gregswindle/generator-apiproxy/pulls
-[readme-score-img]: http://readme-score-api.herokuapp.com/score.svg?url=https://github.com/gregswindle/generator-apiproxy
-[readme-score-url]: http://clayallsopp.github.io/readme-score?url=https://github.com/gregswindle/generator-apiproxy
+[pr-url]: https://github.com/gregswindle/product-name/pulls
+[readme-score-img]: http://readme-score-api.herokuapp.com/score.svg?url=https://github.com/gregswindle/product-name
+[readme-score-url]: http://clayallsopp.github.io/readme-score?url=https://github.com/gregswindle/product-name
 [scoreme-url]: http://clayallsopp.github.io/readme-score/
-[sonar-cognitive-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=cognitive_complexity
-[sonar-cognitive-url]: https://sonarcloud.io/component_measures/metric/cognitive_complexity/list?id=gregswindle-generator-apiproxy
-[sonar-complexity-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=function_complexity
-[sonar-complexity-url]: https://sonarcloud.io/component_measures/domain/Complexity?id=gregswindle-generator-apiproxy
-[sonar-coverage-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=coverage
-[sonar-coverage-url]: https://sonarcloud.io/component_measures/domain/Coverage?id=gregswindle-generator-apiproxy
-[sonar-gate-img]: http://sonarcloud.io/api/badges/gate?key=gregswindle-generator-apiproxy
-[sonar-gate-url]: http://sonarcloud.io/dashboard/index/gregswindle-generator-apiproxy
-[sonar-tech-debt-img]: https://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=sqale_debt_ratio
-[sonar-tech-debt-url]: https://sonarcloud.io/component_measures/metric/sqale_index/list?id=gregswindle-generator-apiproxy
+[sonar-cognitive-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=cognitive_complexity
+[sonar-cognitive-url]: https://sonarcloud.io/component_measures/metric/cognitive_complexity/list?id=gregswindle-product-name
+[sonar-complexity-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=function_complexity
+[sonar-complexity-url]: https://sonarcloud.io/component_measures/domain/Complexity?id=gregswindle-product-name
+[sonar-coverage-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=coverage
+[sonar-coverage-url]: https://sonarcloud.io/component_measures/domain/Coverage?id=gregswindle-product-name
+[sonar-gate-img]: http://sonarcloud.io/api/badges/gate?key=gregswindle-product-name
+[sonar-gate-url]: http://sonarcloud.io/dashboard/index/gregswindle-product-name
+[sonar-tech-debt-img]: https://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=sqale_debt_ratio
+[sonar-tech-debt-url]: https://sonarcloud.io/component_measures/metric/sqale_index/list?id=gregswindle-product-name
 [swagger-cli-url]: https://github.com/BigstickCarpet/swagger-cli
-[swagger-logo-20-img]: https://github.com/gregswindle/generator-apiproxy/blob/master/.assets/media/img/swagger-logo-20.png
+[swagger-logo-20-img]: https://github.com/gregswindle/product-name/blob/master/.assets/media/img/swagger-logo-20.png
 [swagger-markdown-url]: https://github.com/syroegkin/swagger-markdown
 [swagger-validity-img]: https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.json.svg
 [swagger-validity-url]: http://online.swagger.io/validator/debug?url=http://api.swindle.net/cordova/v6/contacts/openapi.json
-[travis-image]: https://travis-ci.org/gregswindle/generator-apiproxy.svg?branch=master
-[travis-url]: https://travis-ci.org/gregswindle/generator-apiproxy
+[travis-image]: https://travis-ci.org/gregswindle/product-name.svg?branch=master
+[travis-url]: https://travis-ci.org/gregswindle/product-name
 [stack-share-image]: https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat
-[stack-share-url]: https://stackshare.io/gregswindle/generator-apiproxy
-[codecov-image]: https://codecov.io/gh/gregswindle/generator-apiproxy/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/gregswindle/generator-apiproxy
-[coveralls-img]: https://coveralls.io/repos/github/gregswindle/generator-apiproxy/badge.svg
-[coveralls-url]: https://coveralls.io/github/gregswindle/generator-apiproxy
-[sonar-code-smells-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=code_smells
-[sonar-code-smells-url]: https://sonarcloud.io/component_measures/metric/code_smells/list?id=gregswindle-generator-apiproxy
-[sonar-cognitive-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=cognitive_complexity
-[sonar-cognitive-url]: https://sonarcloud.io/component_measures/metric/cognitive_complexity/list?id=gregswindle-generator-apiproxy
-[sonar-complexity-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=function_complexity
-[sonar-complexity-url]: https://sonarcloud.io/component_measures/domain/Complexity?id=gregswindle-generator-apiproxy
-[sonar-coverage-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=coverage
-[sonar-coverage-url]: https://sonarcloud.io/component_measures/domain/Coverage?id=gregswindle-generator-apiproxy
-[sonar-duplications-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=duplicated_line_density
-[sonar-duplications-url]: https://sonarcloud.io/component_measures/domain/Duplications?id=gregswindle-generator-apiproxy
-[sonar-gate-img]: http://sonarcloud.io/api/badges/gate?key=gregswindle-generator-apiproxy
-[sonar-gate-url]: http://sonarcloud.io/dashboard/index/gregswindle-generator-apiproxy
-[sonar-issues-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=blocker_violations
-[sonar-issues-url]: https://sonarcloud.io/component_measures/domain/Issues?id=gregswindle-generator-apiproxy
-[sonar-maintainability-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=new_maintainability_rating
-[sonar-maintainability-url]: https://sonarcloud.io/component_measures/domain/Maintainability?id=gregswindle-generator-apiproxy
-[sonar-reliability-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=new_reliability_rating
-[sonar-reliability-url]: https://sonarcloud.io/component_measures/domain/Reliability?id=gregswindle-generator-apiproxy
-[sonar-security-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=vulnerabilities
-[sonar-security-url]: https://sonarcloud.io/component_measures/domain/Security?id=gregswindle-generator-apiproxy
-[sonar-tech-debt-img]:  https://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=sqale_debt_ratio
-[sonar-tech-debt-url]: https://sonarcloud.io/component_measures/metric/sqale_index/list?id=gregswindle-generator-apiproxy
+[stack-share-url]: https://stackshare.io/gregswindle/product-name
+[codecov-image]: https://codecov.io/gh/gregswindle/product-name/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/gregswindle/product-name
+[coveralls-img]: https://coveralls.io/repos/github/gregswindle/product-name/badge.svg
+[coveralls-url]: https://coveralls.io/github/gregswindle/product-name
+[sonar-code-smells-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=code_smells
+[sonar-code-smells-url]: https://sonarcloud.io/component_measures/metric/code_smells/list?id=gregswindle-product-name
+[sonar-cognitive-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=cognitive_complexity
+[sonar-cognitive-url]: https://sonarcloud.io/component_measures/metric/cognitive_complexity/list?id=gregswindle-product-name
+[sonar-complexity-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=function_complexity
+[sonar-complexity-url]: https://sonarcloud.io/component_measures/domain/Complexity?id=gregswindle-product-name
+[sonar-coverage-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=coverage
+[sonar-coverage-url]: https://sonarcloud.io/component_measures/domain/Coverage?id=gregswindle-product-name
+[sonar-duplications-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=duplicated_line_density
+[sonar-duplications-url]: https://sonarcloud.io/component_measures/domain/Duplications?id=gregswindle-product-name
+[sonar-gate-img]: http://sonarcloud.io/api/badges/gate?key=gregswindle-product-name
+[sonar-gate-url]: http://sonarcloud.io/dashboard/index/gregswindle-product-name
+[sonar-issues-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=blocker_violations
+[sonar-issues-url]: https://sonarcloud.io/component_measures/domain/Issues?id=gregswindle-product-name
+[sonar-maintainability-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=new_maintainability_rating
+[sonar-maintainability-url]: https://sonarcloud.io/component_measures/domain/Maintainability?id=gregswindle-product-name
+[sonar-reliability-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=new_reliability_rating
+[sonar-reliability-url]: https://sonarcloud.io/component_measures/domain/Reliability?id=gregswindle-product-name
+[sonar-security-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=vulnerabilities
+[sonar-security-url]: https://sonarcloud.io/component_measures/domain/Security?id=gregswindle-product-name
+[sonar-tech-debt-img]:  https://sonarcloud.io/api/badges/measure?key=gregswindle-product-name&metric=sqale_debt_ratio
+[sonar-tech-debt-url]: https://sonarcloud.io/component_measures/metric/sqale_index/list?id=gregswindle-product-name

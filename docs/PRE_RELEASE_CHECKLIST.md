@@ -1,5 +1,5 @@
-# Pre-release checklist for `generator-apiproxy`
-> Before you release `generator-apiproxy`, ensure the following conditions are
+# Pre-release checklist for `product-name`
+> Before you release `product-name`, ensure the following conditions are
 > met.
 
 ## Table of contents

@@ -1,6 +1,6 @@
 # `ESLint` rules
 
-`generator-apiproxy` enforces the following code standards with `ESLint`.
+`product-name` enforces the following code standards with `ESLint`.
 
 ## Table of contents
 

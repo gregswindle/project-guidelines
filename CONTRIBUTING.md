@@ -254,12 +254,12 @@ test(<scope>): <subject>
 ```
 
 ## 6. Development
-`generator-apiproxy` is dedicated to enabling best practices. It is therefore crucial that the generator itself follows strong engineering standards to assure quality and performance.
+`product-name` is dedicated to enabling best practices. It is therefore crucial that the generator itself follows strong engineering standards to assure quality and performance.
 
 ### 6.1. Code standards
 
 ESLint evaluates Javascript code standards before each test run with the `npm-script pretest`.
-Heres' a [table of `generator-apiproxy's` ESLint rules][eslint-rules-table-url] and their enforcement.
+Heres' a [table of `product-name's` ESLint rules][eslint-rules-table-url] and their enforcement.
 
 ### 6.2. Testing
 
@@ -280,7 +280,7 @@ $ npm test
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars3.githubusercontent.com/u/6599333?v=4" width="100px;"/><br /><sub>rm-cortez</sub>](https://github.com/rm-cortez)<br />[👀](#review-rm-cortez "Reviewed Pull Requests") [📖](https://github.com/@gregswindle/generator-apiproxy/commits?author=rm-cortez "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/1043478?v=4" width="100px;"/><br /><sub>Spencer Hamm</sub>](http://spencerhamm.com)<br />[👀](#review-spentacular "Reviewed Pull Requests") |
+| [<img src="https://avatars3.githubusercontent.com/u/6599333?v=4" width="100px;"/><br /><sub>rm-cortez</sub>](https://github.com/rm-cortez)<br />[👀](#review-rm-cortez "Reviewed Pull Requests") [📖](https://github.com/@gregswindle/product-name/commits?author=rm-cortez "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/1043478?v=4" width="100px;"/><br /><sub>Spencer Hamm</sub>](http://spencerhamm.com)<br />[👀](#review-spentacular "Reviewed Pull Requests") |
 | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
@@ -297,8 +297,8 @@ Thank you for contributing, and welcome to the community!
 [commitplease-url]: https://www.npmjs.com/package/commitplease
 [eslint-rules-table-url]: ESLINT_RULES.md
 [git-commit-guidelines-url]: https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit
-[issues-new-url]: https://github.com/gregswindle/generator-apiproxy/issues/new
-[issues-url]: https://github.com/gregswindle/generator-apiproxy/issues
+[issues-new-url]: https://github.com/gregswindle/product-name/issues/new
+[issues-url]: https://github.com/gregswindle/product-name/issues
 [label-status-available-url]: ../labels/Status%3A%20Available
 [license-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat
 [license-url]: ../LICENSE
@@ -308,5 +308,5 @@ Thank you for contributing, and welcome to the community!
 [new-issue-url]: https://oneconfluence.verizon.com/x/So_PCw
 [php-codesniffer-url]: https://github.com/squizlabs/ESLint
 [pr-course-url]: https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github
-[pr-url]: https://github.com/gregswindle/generator-apiproxy/pulls
+[pr-url]: https://github.com/gregswindle/product-name/pulls
 [standard-version-url]: https://github.com/conventional-changelog/standard-version

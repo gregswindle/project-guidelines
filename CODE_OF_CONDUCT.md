@@ -87,7 +87,7 @@ Icons by [icons8](https://icons8.com/).
 [pledge-image]: /docs/img/icons8/pledge-scout-sign.png
 [scope-image]: /docs/img/icons8/map-marker.png
 
-[team-email-mailto]: mailto:gregory.jay.swindle@verizon.com?Subject=%5Bgenerator-apiproxy%5D%20Code%20of%20conduct%20concern
+[team-email-mailto]: mailto:gregory.jay.swindle@verizon.com?Subject=%5Bproduct-name%5D%20Code%20of%20conduct%20concern
 [homepage]: http://contributor-covenant.org
 [version]: http://contributor-covenant.org/version/1/4/
-[team-issues-url]: https://github.com/gregswindle/generator-apiproxy/issues/new
+[team-issues-url]: https://github.com/gregswindle/product-name/issues/new
