@@ -1,13 +1,13 @@
-![JavaScript][javascript-logo]
 
-# Product Development Guidelines &middot; [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-> Delivering valuable, high-quality products is challenging, and requires focused attention and clear communication.
-Well-defined, evidence-based guidelines are therefore vital for effective collaboration. The following guidelines are based
-on years of experience and retrospectives, but that doesn't make them sacred scripture! In the spirit of continuous improvement,
-always feel free to suggest new guidelines and to challenge existing norms with a pull request.
+[中文版](./README-zh.md)
 
-## Table of contents
+[<img src="./images/hive-red-logo.png" width="180" height="180">](http://wearehive.co.uk/)
 
+
+# Project Guidelines &middot; [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+> While developing a new project is like rolling on a green field for you, maintaining it is a potential dark twisted nightmare for someone else.
+Here's a list of guidelines we've found, written and gathered that (we think) works really well with most JavaScript projects here at [hive](http://wearehive.co.uk).
+If you want to share a best practice, or think one of these guidelines should be removed, [feel free to share it with us](http://makeapullrequest.com).
 - [Git](#git)
     - [Some Git rules](#some-git-rules)
     - [Git workflow](#git-workflow)
@@ -31,231 +31,121 @@ always feel free to suggest new guidelines and to challenge existing norms with 
 
 <a name="git"></a>
 ## 1. Git
-![Git][git-logo-image]
+![Git](/images/branching.png)
 <a name="some-git-rules"></a>
 
-### 1.1. How to collaborate with Git
+### 1.1 Some Git rules
+There are a set of rules to keep in mind:
+* Perform work in a feature branch.
+    
+    _Why:_
+    >Because this way all work is done in isolation on a dedicated branch rather than the main branch. It allows you to submit multiple pull requests without confusion. You can iterate without polluting the master branch with potentially unstable, unfinished code. [read more...](https://www.atlassian.com/git/tutorials/comparing-workflows#feature-branch-workflow)
+* Branch out from `develop`
+    
+    _Why:_
+    >This way, you can make sure that code in master will almost always build without problems, and can be mostly used directly for releases (this might be overkill for some projects).
 
-Git is a collaboration tool that allows self-directed teams to govern product development with team members anywhere in the world. Here are some rules for source code collaboration.
+* Never push into `develop` or `master` branch. Make a Pull Request.
+    
+    _Why:_
+    > It notifies team members that they have completed a feature. It also enables easy peer-review of the code and dedicates forum for discussing the proposed feature.
 
-#### ![Source code editor][atom-ide-image] Perform work in a topic branch.
+* Update your local `develop` branch and do an interactive rebase before pushing your feature and making a Pull Request.
 
-  _Why:_
-  >Use an isolated topic branch for parallel product development. Topic branches allow you to submit multiple pull requests without confusion. You can iterate without polluting the master branch with potentially unstable, unfinished code. [read more...](https://www.atlassian.com/git/tutorials/comparing-workflows#feature-branch-workflow)
+    _Why:_
+    > Rebasing will merge in the requested branch (`master` or `develop`) and apply the commits that you have made locally to the top of the history without creating a merge commit (assuming there were no conflicts). Resulting in a nice and clean history. [read more ...](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
 
+* Resolve potential conflicts while rebasing and before making a Pull Request.
+* Delete local and remote feature branches after merging.
+    
+    _Why:_
+    > It will clutter up your list of branches with dead branches.It insures you only ever merge the branch back into (`master` or `develop`) once. Feature branches should only exist while the work is still in progress.
 
-#### ![Git fork][git-fork-image] Branch out from `develop`.
+* Before making a Pull Request, make sure your feature branch builds successfully and passes all tests (including code style checks).
+    
+    _Why:_
+    > You are about to add your code to a stable branch. If your feature-branch tests fail, there is a high chance that your destination branch build will fail too. Additionally you need to apply code style check before making a Pull Request. It aids readability and reduces the chance of formatting fixes being mingled in with actual changes.
 
-  _Why:_
-  >This way, you can make sure that code in master will almost always build without problems, and can be mostly used directly for releases (this might be overkill for some projects).
+* Use [this](./.gitignore) `.gitignore` file.
+    
+    _Why:_
+    > It already has a list of system files that should not be sent with your code into a remote repository. In addition, it excludes setting folders and files for most used editors, as well as most common dependency folders.
 
-#### ![Git forbidden][git-no-entry-image] Never push into `develop` or `master` branch. Make a Pull Request.
-
-  _Why:_
-  > It notifies team members that they have completed a feature. It also enables easy peer-review of the code and dedicates forum for discussing the proposed feature.
-
-#### ![Git pull request][git-pull-request-image] Submit a Pull Request as soon as possible.
-
-  _Why:_
-  > Pull Requests declare work in progress. Frequent pushes to a Pull Request notify your team members about change, and gives them the opportunity to provide feedback more often. Pull Request pushes also trigger automated CI-services, which help you fail fast and assess quality.
-
-#### ![Git compare][git-compare-image] Update your local `develop` branch with an interactive rebase before you ask for Pull Request approvals.
-
-  _Why:_
-  > Rebasing will merge in the requested branch (`master` or `develop`) and apply the commits that you have made locally to the top of the history without creating a merge commit (assuming there were no conflicts). Resulting in a nice and clean history. [read more ...](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
-
-#### ![Git compare][git-resolve-image] Resolve rebase conflicts before Pull Request reviews.
-
-_Why:_
-> Rebasing will merge in the requested branch (`master` or `develop`) and apply the commits that you have made locally to the top of t
-
-#### ![CI build success][travis-ci-logo-image] Ensure your topic branch's CI-service checks pass before you ask others to review a Pull Request.
-
- _Why:_
- > You are about to add your code to a stable branch. If your feature-branch tests fail, there is a high chance that your destination branch build will fail too. Additionally you need to apply code style check before making a Pull Request. It aids readability and reduces the chance of formatting fixes being mingled in with actual changes.
-
-#### ![Git pull request review][git-pr-review-image] Add Reviewers and the Label "Status: Review Needed" when your topic branch is ready for review.
-
-  _Why:_
-  > When you add a Reviewer, GitHub (or Bitbucket) notifies teammates that your topic branch meets all Acceptance Criteria and is ready to be merged into the main branch. Adding the label "Status: Review Needed" formally declares the status of your topic branch, and helps teams filter through issues.
-
-#### ![Delete branches][delete-image] Delete local and remote topic branches after merging.
-
-  _Why:_
-  > It will clutter up your list of branches with dead branches.It insures you only ever merge the branch back into (`master` or `develop`) once. topic branches should only exist while the work is still in progress.
-
-#### ![Ignore extraneous files][git-ignore-image] Use [this](./.gitignore) `.gitignore` file.
-
-  _Why:_
-  > It already has a list of system files that should not be sent with your code into a remote repository. In addition, it excludes setting folders and files for most used editors, as well as most common dependency folders.
-
-#### ![Git repo defense][git-repo-protection-image] Protect your `develop` and `master` branches.
-
-  _Why:_
-  > It protects your production-ready branches from receiving unexpected and irreversible changes. read more... [Github](https://help.github.com/articles/about-protected-branches/) and [Bitbucket](https://confluence.atlassian.com/bitbucketserver/using-branch-permissions-776639807.html)
+* Protect your `develop` and `master` branch.
+  
+    _Why:_
+    > It protects your production-ready branches from receiving unexpected and irreversible changes. read more... [Github](https://help.github.com/articles/about-protected-branches/) and [Bitbucket](https://confluence.atlassian.com/bitbucketserver/using-branch-permissions-776639807.html)
 
 <a name="git-workflow"></a>
-
-### 1.2. Git workflow
-
+### 1.2 Git workflow
 Because of most of the reasons above, we use [Feature-branch-workflow](https://www.atlassian.com/git/tutorials/comparing-workflows#feature-branch-workflow) with [Interactive Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing#the-golden-rule-of-rebasing) and some elements of [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow) (naming and having a develop branch). The main steps are as follow:
 
-#### 1.2.1. Initializing a new product repository
+* For a new project, initialize a git repository in the project directory. __For subsequent features/changes this step should be ignored__.
+   ```sh
+   cd <project directory>
+   git init
+   ```
 
-##### 1.2.1.1. Create an empty directory
-
-__For subsequent features/changes, or for existing repositories, this step should be ignored__.
-
-Make a new directory named after your product using kebab-case.
-
-E.g., if you're developing a new API called "Verizon Customer Contact:"
-
-```sh
-# mkdir <product-name>
-$ mkdir verizon-customer-contact
-```
-
-##### 1.2.1.2. Initialize a git repository in the product directory.
-
-For a new product, initialize a git repository in the product directory.
-
-```sh
-$ cd <project directory>
-$ git init
-```
-
-##### 1.2.1.3. Checkout a new feature/fix/topic branch.
-
-Use the format **`<type>/<issue-id>-<branch-name>`**, where:
-
- * **`<type>`** describes the kind of change you're making:
-
-     * `build` - You're working on build automation.
-     * `chore` - You're doing "grunt work" like importing resources into a new repository.
-     * `ci` - You're changing continuous integration features.
-     * `docs` - You're adding or revising documentation.
-     * `feat` - You're adding a new feature or enhancement.
-     * `fix` - You're repairing a defect (aka "bug").
-     * `perf` - You're improving performance.
-     * `refactor` - You're improving the design of source code without changing its features or behaviors.
-     * `style` - You're changing the user-interface or you're addressing source-code style.
-     * `test` - You're adding tests or increasing code coverage.
-
- * **`<issue-id>`** refers to the GitHub, JIRA, or your issue tracking system's issue identifier:
-
-    * GitHub issues - add the issue number, e.g.,
-
+* Checkout a new feature/bug-fix branch.
+    ```sh
+    git checkout -b <branchname>
     ```
-    git checkout -b feat/#12-add-login-form
+* Make Changes.
+    ```sh
+    git add
+    git commit -a
     ```
-    * JIRA issues - add the issue KEY, e.g.,
+    _Why:_
+    > `git commit -a` will start an editor which lets you separate the subject from the body. Read more about it in *section 1.3*.
 
+* Sync with remote to get changes you’ve missed.
+    ```sh
+    git checkout develop
+    git pull
     ```
-    git checkout -b fix/API-23-add-delete-method
+    
+    _Why:_
+    > This will give you a chance to deal with conflicts on your machine while rebasing(later) rather than creating a Pull Request that contains conflicts.
+    
+* Update your feature branch with latest changes from develop by interactive rebase.
+    ```sh
+    git checkout <branchname>
+    git rebase -i --autosquash develop
     ```
- * **`<branch-name>`** is a brief name that reflects your changes, e.g.,
+    
+    _Why:_
+    > You can use --autosquash to squash all your commits to a single commit. Nobody wants many commits for a single feature in develop branch. [read more...](https://robots.thoughtbot.com/autosquashing-git-commits)
+    
+* If you don’t have conflict skip this step. If you have conflicts, [resolve them](https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/)  and continue rebase.
+    ```sh
+    git add <file1> <file2> ...
+    git rebase --continue
+    ```
+* Push your branch. Rebase will change history, so you'll have to use `-f` to force changes into the remote branch. If someone else is working on your branch, use the less destructive `--force-with-lease`.
+    ```sh
+    git push -f
+    ```
+    
+    _Why:_
+    > When you do a rebase, you are changing the history on your feature branch. As a result, Git will reject normal `git push`. Instead, you'll need to use the -f or --force flag. [read more...](https://developer.atlassian.com/blog/2015/04/force-with-lease/)
+    
+    
+* Make a Pull Request.
+* Pull request will be accepted, merged and close by a reviewer.
+* Remove your local feature branch if you're done.
 
-    * `refactor/#24-extract-purchase-from-shopping-cart`
-    * `ci/#30-execute-unit-tests`
-    * `perf/CAOV-455-cache-html-templates`
-
-#### 1.2.2. Making changes (for new _and_ existing repositories)
-
-##### 1.2.2.1. Make Changes.
-
-```sh
-git add
-git commit -a
-```
-
-_Why:_
-
-> `git commit -a` will start an editor which lets you separate the subject from the body. Read more about it in *section 1.3*.
-
-##### 1.2.2.2. Sync with remote to get changes you’ve missed.
-
-```sh
-git checkout develop
-git pull
-```
-
-_Why:_
-
-> This will give you a chance to deal with conflicts on your machine while rebasing(later) rather than creating a Pull Request that contains conflicts.
-
-##### 1.2.2.3. Update your topic branch with latest changes from develop by interactive rebase.
-
-```sh
-git checkout <type>/<issue-id>-<branch-name>
-git rebase -i --autosquash develop
-```
-
-_Why:_
-
-> You can use --autosquash to squash all your commits to a single commit. Nobody wants many commits for a single feature in develop branch. [read more...](https://robots.thoughtbot.com/autosquashing-git-commits)
-
-##### 1.2.2.4. Resolve conflicts.
-
-If you don’t have conflicts, skip this step. If you have conflicts, [resolve them](https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/)  and continue rebase.
-
-```sh
-git add <file1> <file2> ...
-git rebase --continue
-```
-
-##### 1.2.2.5. Push your branch.
-
-Rebase will change history, so you'll have to use `-f` to force changes into the remote branch. If someone else is working on your branch, use the less destructive `--force-with-lease`.
-
-```sh
-git push -f
-```
-
-_Why:_
-
-> When you do a rebase, you are changing the history on your topic branch. As a result, Git will reject normal `git push`. Instead, you'll need to use the -f or --force flag. [read more...](https://developer.atlassian.com/blog/2015/04/force-with-lease/)
-
-#### 1.2.3. Submit a Pull Request (PR).
-
-Git controls change with Pull Requests. When you submit a Pull Request, you're declaring to the team that you have begun working on an issue.
-
-* Make a Pull Request with GitHub or Bitbucket.
-* Add reviewers to the Pull Request.
-* **GitHub Pull Requests** Add the label "Status: Review Needed".
-* Collaborate with reviewers via comments, if reviewers have questions.
-* Once the Pull request has been approved, the reviewer will merge into the main branch, close the pull request, and delete the remote branch.
-* Remove your local topic branch if you're done.
-
-```sh
-git branch -d <branchname>
-```
-to remove all branches which are no longer on remote
-
-```sh
-git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done
-```
+  ```sh
+  git branch -d <branchname>
+  ```
+  to remove all branches which are no longer on remote
+  ```sh
+  git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done
+  ```
 
 <a name="writing-good-commit-messages"></a>
 ### 1.3 Writing good commit messages
 
-Well-defined commit message guidelines makes working with Git and collaborating with others a lot easier. Enforcing the  with [`commitplease`][commitplease-url] pre-commit hooks
-
- * Strictly follow the [AngularJS Git Commit Guidelines][git-commit-guidelines-url] (or the [`Conventional Commit Message Specification`][git-commit-guidelines-url] at the very least).
-
- _Why:_
- > Consistent, legible Git logs not only facilitate communication, but also enable **automated CHANGELOG generation and semantic versioning** with [`standard-version`][standard-version-url].
-
- * Comply with the Conventional Commit Message format:
-
- ```text
- <type>(<scope>): <subject>
- <BLANK LINE>
- <body>
- <BLANK LINE>
- <footer>
- ```
-
- * Begin a commit message with a valid `<type>(<scope>): <subject>`.
+Having a good guideline for creating commits and sticking to it makes working with Git and collaborating with others a lot easier. Here are some rules of thumb ([source](https://chris.beams.io/posts/git-commit/#seven-rules)):
 
  * Separate the subject from the body with a newline between the two.
 
@@ -267,173 +157,29 @@ Well-defined commit message guidelines makes working with Git and collaborating 
     _why_
     > Commits should be as fine-grained and focused as possible, it is not the place to be verbose. [read more...](https://medium.com/@preslavrachev/what-s-with-the-50-72-rule-8a906f61f09c)
 
+ * Capitalize the subject line.
  * Do not end the subject line with a period.
  * Use [imperative mood](https://en.wikipedia.org/wiki/Imperative_mood) in the subject line.
 
     _Why:_
-    > Rather than writing messages that say what a committer has done, it's better to consider these messages as the instructions for what is going to be done after the commit is applied on the repository. [read more...](https://news.ycombinator.com/item?id=2079612)
+    > Rather than writing messages that say what a committer has done. It's better to consider these messages as the instructions for what is going to be done after the commit is applied on the repository. [read more...](https://news.ycombinator.com/item?id=2079612)
+
 
  * Use the body to explain **what** and **why** as opposed to **how**.
- * Write any associated GitHub (or JIRA) issues in the <footer> to help trace your commits to documented issues and defects.
-
-   _Why:_
-   > GitHub (and Bitbucket) automatically hyperlink issue numbers their associated documentation. They also track issue-related commits.
-
-#### 1.3.1. `build` commit messages
-
-Issues related to product builds. The AngularJS Git commit message format is
-
-```
-build(<scope>): <subject>
-<BLANK LINE>
-<[body]>
-<BLANK LINE>
-<footer>
-```
-
-#### 1.3.2. `chore` commit messages
-
-Issues related to miscellaneous non-functional changes (usually "maintenance" changes). The AngularJS Git commit message format is
-
-```
-chore(<scope>): <subject>
-<BLANK LINE>
-<[body]>
-<BLANK LINE>
-<footer>
-```
-
-#### 1.3.3. `ci` commit messages
-
-Issues related to continuous integration, delivery, and deployment tasks. The AngularJS Git commit message format is
-
-```
-ci(<scope>): <subject>
-<BLANK LINE>
-<[body]>
-<BLANK LINE>
-<footer>
-```
-
-#### 1.3.4. `docs` commit messages
-
-Issues related to documentation. The AngularJS Git commit message format is
-
-```
-docs(<scope>): <subject>
-<BLANK LINE>
-<[body]>
-<BLANK LINE>
-<footer>
-```
-
-#### 1.3.5. `feat` (feature) commit messages
-
-New feature or enhancement requests. The AngularJS Git commit message format is
-
-```
-feat(<scope>): <subject>
-<BLANK LINE>
-<[body]>
-<BLANK LINE>
-<footer>
-```
-
-#### 1.3.6. `fix` commit messages
-
-Defect (bug) repair issues. The AngularJS Git commit message format is
-
-```
-fix(<scope>): <subject>
-<BLANK LINE>
-<[body]>
-<BLANK LINE>
-<footer>
-```
-
-#### 1.3.7. `perf` (performance) commit messages
-
-Performance improvement issues. The AngularJS Git commit message format is
-
-```
-perf(<scope>): <subject>
-<BLANK LINE>
-<[body]>
-<BLANK LINE>
-<footer>
-```
-
-#### 1.3.8. `refactor` commit messages
-
-Source code design **improvements that do not affect product behavior**. The AngularJS Git commit message format is
-
-```
-refactor(<scope>): <subject>
-<BLANK LINE>
-<[body]>
-<BLANK LINE>
-<footer>
-```
-
-#### 1.3.9. `revert` commit messages
-
-Tasks that revert to a previous commit hash. Your message should begin with `revert:`, followed by the header of the reverted commit.
-
-In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
-
-```
-revert: <hash>
-<BLANK LINE>
-This reverts commit <hash>.
-<BLANK LINE>
-<footer>
-```
-
-#### 1.3.10. `style` commit messages
-
-Issues related to style guideline compliance, especially `ESLint` errors and warnings. The AngularJS Git commit message format is
-
-```
-style(<scope>): <subject>
-<BLANK LINE>
-<[body]>
-<BLANK LINE>
-<footer>
-```
-
-#### 1.3.11. `test` commit messages
-
-Test coverage tasks. The AngularJS Git commit message format is
-
-```
-test(<scope>): <subject>
-<BLANK LINE>
-<[body]>
-<BLANK LINE>
-<footer>
-```
 
  <a name="documentation"></a>
 ## 2. Documentation
 
-![Documentation](/docs/img/icons8/markdown.png)
-
-[![ScoreMe README.md grade][readme-score-img]][readme-score-url]
+![Documentation](/images/documentation.png)
 
 * Use this [template](./README.sample.md) for `README.md`, Feel free to add uncovered sections.
-* Prefer a static document site generator (like GitBook or GitHub Pages) to host your documentation with additional features.
-* When using static document sites, add RunKit blocks so consumers and contributors can execute code samples immediately.
 * For projects with more than one repository, provide links to them in their respective `README.md` files.
 * Keep `README.md` updated as a project evolves.
-* Comment your code with API documentation generator annotations (e.g., JSDoc 3 or ESDoc). Try to make it as clear as possible what you are intending with each major section.
-* If there is an open discussion on github or stackoverflow about the code or approach you're using, include the link in your comment.
+* Comment your code. Try to make it as clear as possible what you are intending with each major section.
+* If there is an open discussion on github or stackoverflow about the code or approach you're using, include the link in your comment. 
 * Don't use comments as an excuse for a bad code. Keep your code clean.
+* Don't use clean code as an excuse to not comment at all.
 * Keep comments relevant as your code evolves.
-* Assess your `README.md`'s quality with ScoreMe.
-
-
-  _Why:_
-  > Your repository's `README.md` is your product's home page for consumers and contributors. ScoreMe uses the same calculations as those applied to CocoaPods libraries.
 
 <a name="environments"></a>
 ## 3. Environments
@@ -456,14 +202,14 @@ test(<scope>): <subject>
     [read more](https://medium.com/@rafaelvidaurre/managing-environment-variables-in-node-js-2cb45a55195f)
 
 * It’s recommended to validate environment variables before your app starts.  [Look at this sample](./configWithTest.sample.js) using `joi` to validate provided values.
-
+    
     _Why:_
     > It may save others from hours of troubleshooting.
 
 <a name="consistent-dev-environments"></a>
 ### 3.1 Consistent dev environments:
 * Set your node version in `engines` in `package.json`.
-
+    
     _Why:_
     > It lets others know the version of node the project works on. [read more...](https://docs.npmjs.com/files/package.json#engines)
 
@@ -476,7 +222,7 @@ test(<scope>): <subject>
 
     _Why:_
     > Some dependencies may fail when installed by newer versions of npm.
-
+    
 * Use Docker image if you can.
 
     _Why:_
@@ -509,17 +255,15 @@ test(<scope>): <subject>
 ## 4. Dependencies
 
 ![Github](/images/modules.png)
-[![Dependency Status][daviddm-image]][daviddm-url] [![devDependencies Status][daviddm-dev-image]][daviddm-dev-url] [![StackShare][stack-share-image]][stack-share-url]
-
 
 * Keep track of your currently available packages: e.g., `npm ls --depth=0`. [read more...](https://docs.npmjs.com/cli/ls)
 * See if any of your packages have become unused or irrelevant: `depcheck`. [read more...](https://www.npmjs.com/package/depcheck)
-
+    
     _Why:_
     > You may include an unused library in your code and increase the production bundle size. Find unused dependencies and get rid of them.
 
 * Before using a dependency, check its download statistics to see if it is heavily used by the community: `npm-stat`. [read more...](https://npm-stat.com/)
-
+    
     _Why:_
     > More usage mostly means more contributors, which usually means better maintenance, and all of these result in quickly discovered bugs and quickly developed fixes.
 
@@ -537,20 +281,19 @@ test(<scope>): <subject>
 * Check to see if the package has known security vulnerabilities with, e.g., [Snyk](https://snyk.io/test?utm_source=risingstack_blog).
 
 
-
 <a name="testing"></a>
 ## 5. Testing
 ![Testing](/images/testing.png)
 * Have a `test` mode environment if needed.
 
     _Why:_
-    > While sometimes end to end testing in `production` mode might seem enough, there are some exceptions: One example is you may not want to enable analytical information on a 'production' mode and pollute someone's dashboard with test data. The other example is that your API may have rate limits in `production` and blocks your test calls after a certain amount of requests.
+    > While sometimes end to end testing in `production` mode might seem enough, there are some exceptions: One example is you may not want to enable analytical information on a 'production' mode and pollute someone's dashboard with test data. The other example is that your API may have rate limits in `production` and blocks your test calls after a certain amount of requests. 
 
 * Place your test files next to the tested modules using `*.test.js` or `*.spec.js` naming convention, like `moduleName.spec.js`.
 
     _Why:_
     > You don't want to dig through a folder structure to find a unit test. [read more...](https://hackernoon.com/structure-your-javascript-code-for-testability-9bc93d9c72dc)
-
+    
 
 * Put your additional test files into a separate test folder to avoid confusion.
 
@@ -561,10 +304,10 @@ test(<scope>): <subject>
 
     _Why:_
     > You want to test a business logic as separate units. You have to "minimize the impact of randomness and nondeterministic processes on the reliability of your code". [read more...](https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3)
-
+    
     > A pure function is a function that always returns the same output for the same input. Conversely, an impure function is one that may have side effects or depends on conditions from the outside to produce a value. That makes it less predictable. [read more...](https://hackernoon.com/structure-your-javascript-code-for-testability-9bc93d9c72dc)
 
-* Use a static type checker
+* Use a static type checker 
 
     _Why:_
     > Sometimes you may need a Static type checker. It brings a certain level of reliability to your code. [read more...](https://medium.freecodecamp.org/why-use-static-types-in-javascript-part-1-8382da1e0adb)
@@ -625,18 +368,18 @@ test(<scope>): <subject>
     _Why:_
     >When you break down a config file for different purposes (database, API and so on); putting them in a folder with a very recognizable name such as `config` makes sense. Just remember not to make different config files for different environments. It doesn't scale cleanly, as more deploys of the app are created, new environment names are necessary.
     Values to be used in config files should be provided by environment variables. [read more...](https://medium.com/@fedorHK/no-config-b3f1171eecd5)
-
+    
 
 * Put your scripts in a `./scripts` folder. This includes `bash` and `node` scripts.
 
     _Why:_
     >It's very likely you may end up with more than one script, production build, development build, database feeders, database synchronization and so on.
-
+    
 
 * Place your build output in a `./build` folder. Add `build/` to `.gitignore`.
 
     _Why:_
-    >Name it what you like, `dist` is also cool. But make sure that keep it consistent with your team. What gets in there is most likely generated  (bundled, compiled, transpiled) or moved there. What you can generate, your teammates should be able to generate too, so there is no point committing them into your remote repository. Unless you specifically want to.
+    >Name it what you like, `dist` is also cool. But make sure that keep it consistent with your team. What gets in there is most likely generated  (bundled, compiled, transpiled) or moved there. What you can generate, your teammates should be able to generate too, so there is no point committing them into your remote repository. Unless you specifically want to. 
 
 * Use `PascalCase' 'camelCase` for filenames and directory names. Use  `PascalCase`  only for Components.
 
@@ -650,7 +393,7 @@ test(<scope>): <subject>
 <a name="code-style"></a>
 ## 7. Code style
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+![Code style](/images/code-style.png)
 
 <a name="code-style-check"></a>
 ### 7.1 Some code style guidelines
@@ -658,7 +401,7 @@ test(<scope>): <subject>
 * Use stage-2 and higher JavaScript (modern) syntax for new projects. For old project stay consistent with existing syntax unless you intend to modernise the project.
 
     _Why:_
-    > This is all up to you. We use transpilers to use advantages of new syntax. stage-2 is more likely to eventually become part of the spec with only minor revisions.
+    > This is all up to you. We use transpilers to use advantages of new syntax. stage-2 is more likely to eventually become part of the spec with only minor revisions. 
 
 * Include code style check in your build process.
 
@@ -694,7 +437,7 @@ test(<scope>): <subject>
 
 
 * Always comment and keep them relevant as code changes. Remove commented blocks of code.
-
+    
     _Why:_
     > Your code should be as readable as possible, you should get rid of anything distracting. If you refactored a function, don't just comment out the old one, remove it.
 
@@ -765,7 +508,7 @@ _Why:_
     * A resource has data, gets nested, and there are methods that operate against it.
     * A group of resources is called a collection.
     * URL identifies the online location of resource or collection.
-
+    
     _Why:_
     > This is a very well-known design to developers (your main API consumers). Apart from readability and ease of use, it allows us to write generic libraries and connectors without even knowing what the API is about.
 
@@ -789,7 +532,7 @@ _Why:_
     /students/245743
     /airports/kjfk
     ```
-* Avoid URLs like this:
+* Avoid URLs like this: 
     ```
     GET /blogs/:blogId/posts/:postId/summary
     ```
@@ -812,9 +555,9 @@ _Why:_
     > Because for CRUD we use HTTP methods on `resource` or `collection` URLs. The verbs we were talking about are actually `Controllers`. You usually don't develop many of these. [read more...](https://byrondover.github.io/post/restful-api-guidelines/#controller)
 
 * The request body or response type is JSON then please follow `camelCase` for `JSON` property names to maintain the consistency.
-
+    
     _Why:_
-    > This is a JavaScript project guideline, Where Programming language for generating JSON as well as Programming language for parsing JSON are assumed to be JavaScript.
+    > This is a JavaScript project guideline, Where Programming language for generating JSON as well as Programming language for parsing JSON are assumed to be JavaScript. 
 
 * Even though a resource is a singular concept that is similar to an object instance or database record, you should not use your `table_name` for a resource name and `column_name` resource property.
 
@@ -830,13 +573,13 @@ _Why:_
 
     _How:_
     > `GET`: To retrieve a representation of a resource.
-
+    
     > `POST`: To create new resources and sub-resources.
-
+   
     > `PUT`: To update existing resources.
-
+    
     > `PATCH`: To update existing resources. It only updates the fields that were supplied, leaving the others alone.
-
+    
     > `DELETE`:	To delete existing resources.
 
 
@@ -859,7 +602,7 @@ _Why:_
 
 * Use a simple ordinal number for a version with a `v` prefix (v1, v2). Move it all the way to the left in the URL so that it has the highest scope:
     ```
-    http://api.domain.com/v1/schools/3/students
+    http://api.domain.com/v1/schools/3/students	
     ```
 
     _Why:_
@@ -903,7 +646,7 @@ _Why:_
 
 * Use only these 8 status codes to send with you response to describe whether **everything worked**,
 The **client app did something wrong** or The **API did something wrong**.
-
+    
     _Which ones:_
     > `200 OK` response represents success for `GET`, `PUT` or `POST` requests.
 
@@ -917,7 +660,7 @@ The **client app did something wrong** or The **API did something wrong**.
 
     > `403 Forbidden` means the server understood the request but refuses to authorize it.
 
-    > `404 Not Found` indicates that the requested resource was not found.
+    > `404 Not Found` indicates that the requested resource was not found. 
 
     > `500 Internal Server Error` indicates that the request is valid, but the server could not fulfill it due to some unexpected condition.
 
@@ -966,7 +709,7 @@ These are some basic security best practices:
     > A key concern with JSON encoders is preventing arbitrary JavaScript remote code execution within the browser... or, if you're using node.js, on the server. It's vital that you use a proper JSON serializer to encode user-supplied data properly to prevent the execution of user-supplied input on the browser.
 
 * Validate the content-type and mostly use `application/*json` (Content-Type header).
-
+    
     _Why:_
     > For instance, accepting the `application/x-www-form-urlencoded` mime type allows the attacker to create a form and trigger a simple POST request. The server should never assume the Content-Type. A lack of Content-Type header or an unexpected Content-Type header should result in the server rejecting the content with a `4XX` response.
 
@@ -1025,120 +768,3 @@ Sources:
 
 Icons by [icons8](https://icons8.com/)
 
-
-[atom-ide-image]: /docs/img/icons8/atom-ide.png
-[approval-image]: /docs/img/icons8/approval.png
-[cancel-image]: /docs/img/icons8/cancel.png
-[delete-image]: /docs/img/icons8/delete.png
-[git-commit-image]: /docs/img/icons8/git-commit.png
-[git-compare-image]: /docs/img/icons8/git-compare.png
-[git-resolve-image]: /docs/img/icons8/git-diff-resolve.png
-[git-fork-image]: /docs/img/icons8/git-fork.png
-[git-ignore-image]: /docs/img/icons8/git-ignore.png
-[git-logo-image]: /docs/img/icons8/git-logo.png
-[git-merge-image]: /docs/img/icons8/git-merge.png
-[git-merged-image]: /docs/img/icons8/git-merged.png
-[git-no-entry-image]: /docs/img/icons8/git-no-entry.png
-[git-pull-request-image]: /docs/img/icons8/git-pull-request.png
-[git-pr-review-image]: /docs/img/icons8/git-pr-review.png
-[git-repo-protection-image]: /docs/img/icons8/git-repo-protection.png
-[javascript-logo]: /docs/img/icons8/js-filled.png
-[travis-ci-logo-image]: /docs/img/icons8/travis-ci-build-passed.png
-[no-0]: /docs/img/icons8/numbers/00.png
-[no-1]: /docs/img/icons8/numbers/01.png
-[no-2]: /docs/img/icons8/numbers/02.png
-[no-3]: /docs/img/icons8/numbers/03.png
-[no-4]: /docs/img/icons8/numbers/04.png
-[no-5]: /docs/img/icons8/numbers/05.png
-[no-6]: /docs/img/icons8/numbers/06.png
-[no-7]: /docs/img/icons8/numbers/07.png
-[no-8]: /docs/img/icons8/numbers/08.png
-[no-9]: /docs/img/icons8/numbers/09.png
-[no-10]: /docs/img/icons8/numbers/10.png
-
-
-
-[api-docs-url]: https://github.com/gregswindle/generator-apiproxy/docs/API.md
-[apigee-edge-js-url]: http://docs.apigee.com/api-services/reference/javascript-object-model
-[appveyor-img]: https://ci.appveyor.com/api/projects/status/qcsxteena4etjlfe?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/gregswindle/generator-apiproxy
-[author-url]: https://github.com/gregswindle
-[changelog-url]: https://github.com/gregswindle/generator-apiproxy/blob/master/CHANGELOG.md
-[codacy-coverage-image]: https://api.codacy.com/project/badge/Coverage/fa4ade3f68a04b9cad26165a59ceb88e
-[codacy-coverage-url]: https://www.codacy.com/app/greg_7/generator-apiproxy?utm_source=github.com&utm_medium=referral&utm_content=gregswindle/generator-apiproxy&utm_campaign=Badge_Coverage
-[codacy-img]: https://api.codacy.com/project/badge/Grade/fa4ade3f68a04b9cad26165a59ceb88e
-[codacy-url]: https://www.codacy.com/app/greg_7/generator-apiproxy?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gregswindle/generator-apiproxy&amp;utm_campaign=Badge_Grade
-[code-of-conduct-url]: https://github.com/gregswindle/generator-apiproxy/blob/master/.github/CODE_OF_CONDUCT.md
-[complexity-report-url]: https://github.com/escomplex/complexity-report
-[coveralls-img]: https://coveralls.io/repos/github/gregswindle/generator-apiproxy/badge.svg?branch=master
-[coveralls-url]: https://coveralls.io/github/gregswindle/generator-apiproxy?branch=master
-[daviddm-dev-image]: https://david-dm.org/gregswindle/generator-apiproxy/dev-status.svg
-[daviddm-dev-url]: https://david-dm.org/gregswindle/generator-apiproxy?type=dev
-[daviddm-image]: https://david-dm.org/gregswindle/generator-apiproxy.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/gregswindle/generator-apiproxy
-[editorconfig-url]: http://editorconfig.org/
-[eslint-github-url]: https://github.com/eslint/eslint
-[fossa-image]: https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fgenerator-apigee-apiproxy.svg?type=shield
-[fossa-url]: https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fgenerator-apigee-apiproxy?ref=badge_shield
-[greenkeeper-img]: https://badges.greenkeeper.io/gregswindle/generator-apiproxy.svg
-[greenkeeper-url]: https://greenkeeper.io/
-[issues-url]: https://github.com/gregswindle/generator-apiproxy/issues
-[jsdoc2md-url]: https://github.com/jsdoc2md/jsdoc-to-markdown
-[license-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat
-[license-url]: https://github.com/gregswindle/generator-apiproxy/blob/master/LICENSE
-[lint-def-url]: https://en.wikipedia.org/wiki/Lint_(software)
-[makeapullrequest-image]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat
-[makeapullrequest-url]: http://makeapullrequest.com
-[npm-image]: https://badge.fury.io/js/generator-apiproxy.svg
-[npm-url]: https://npmjs.org/package/generator-apiproxy
-[nsp-img]: https://nodesecurity.io/orgs/gregswindle/projects/a3912719-529f-457f-9ff6-53fa70d8f475/badge
-[nsp-url]: https://nodesecurity.io/orgs/gregswindle/projects/a3912719-529f-457f-9ff6-53fa70d8f475
-[pr-url]: https://github.com/gregswindle/generator-apiproxy/pulls
-[readme-score-img]: http://readme-score-api.herokuapp.com/score.svg?url=https://github.com/gregswindle/generator-apiproxy
-[readme-score-url]: http://clayallsopp.github.io/readme-score?url=https://github.com/gregswindle/generator-apiproxy
-[scoreme-url]: http://clayallsopp.github.io/readme-score/
-[sonar-cognitive-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=cognitive_complexity
-[sonar-cognitive-url]: https://sonarcloud.io/component_measures/metric/cognitive_complexity/list?id=gregswindle-generator-apiproxy
-[sonar-complexity-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=function_complexity
-[sonar-complexity-url]: https://sonarcloud.io/component_measures/domain/Complexity?id=gregswindle-generator-apiproxy
-[sonar-coverage-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=coverage
-[sonar-coverage-url]: https://sonarcloud.io/component_measures/domain/Coverage?id=gregswindle-generator-apiproxy
-[sonar-gate-img]: http://sonarcloud.io/api/badges/gate?key=gregswindle-generator-apiproxy
-[sonar-gate-url]: http://sonarcloud.io/dashboard/index/gregswindle-generator-apiproxy
-[sonar-tech-debt-img]: https://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=sqale_debt_ratio
-[sonar-tech-debt-url]: https://sonarcloud.io/component_measures/metric/sqale_index/list?id=gregswindle-generator-apiproxy
-[swagger-cli-url]: https://github.com/BigstickCarpet/swagger-cli
-[swagger-logo-20-img]: https://github.com/gregswindle/generator-apiproxy/blob/master/.assets/media/img/swagger-logo-20.png
-[swagger-markdown-url]: https://github.com/syroegkin/swagger-markdown
-[swagger-validity-img]: https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.json.svg
-[swagger-validity-url]: http://online.swagger.io/validator/debug?url=http://api.swindle.net/cordova/v6/contacts/openapi.json
-[travis-image]: https://travis-ci.org/gregswindle/generator-apiproxy.svg?branch=master
-[travis-url]: https://travis-ci.org/gregswindle/generator-apiproxy
-[stack-share-image]: https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat
-[stack-share-url]: https://stackshare.io/gregswindle/generator-apiproxy
-[codecov-image]: https://codecov.io/gh/gregswindle/generator-apiproxy/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/gregswindle/generator-apiproxy
-[coveralls-img]: https://coveralls.io/repos/github/gregswindle/generator-apiproxy/badge.svg
-[coveralls-url]: https://coveralls.io/github/gregswindle/generator-apiproxy
-[sonar-code-smells-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=code_smells
-[sonar-code-smells-url]: https://sonarcloud.io/component_measures/metric/code_smells/list?id=gregswindle-generator-apiproxy
-[sonar-cognitive-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=cognitive_complexity
-[sonar-cognitive-url]: https://sonarcloud.io/component_measures/metric/cognitive_complexity/list?id=gregswindle-generator-apiproxy
-[sonar-complexity-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=function_complexity
-[sonar-complexity-url]: https://sonarcloud.io/component_measures/domain/Complexity?id=gregswindle-generator-apiproxy
-[sonar-coverage-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=coverage
-[sonar-coverage-url]: https://sonarcloud.io/component_measures/domain/Coverage?id=gregswindle-generator-apiproxy
-[sonar-duplications-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=duplicated_line_density
-[sonar-duplications-url]: https://sonarcloud.io/component_measures/domain/Duplications?id=gregswindle-generator-apiproxy
-[sonar-gate-img]: http://sonarcloud.io/api/badges/gate?key=gregswindle-generator-apiproxy
-[sonar-gate-url]: http://sonarcloud.io/dashboard/index/gregswindle-generator-apiproxy
-[sonar-issues-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=blocker_violations
-[sonar-issues-url]: https://sonarcloud.io/component_measures/domain/Issues?id=gregswindle-generator-apiproxy
-[sonar-maintainability-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=new_maintainability_rating
-[sonar-maintainability-url]: https://sonarcloud.io/component_measures/domain/Maintainability?id=gregswindle-generator-apiproxy
-[sonar-reliability-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=new_reliability_rating
-[sonar-reliability-url]: https://sonarcloud.io/component_measures/domain/Reliability?id=gregswindle-generator-apiproxy
-[sonar-security-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=vulnerabilities
-[sonar-security-url]: https://sonarcloud.io/component_measures/domain/Security?id=gregswindle-generator-apiproxy
-[sonar-tech-debt-img]:  https://sonarcloud.io/api/badges/measure?key=gregswindle-generator-apiproxy&metric=sqale_debt_ratio
-[sonar-tech-debt-url]: https://sonarcloud.io/component_measures/metric/sqale_index/list?id=gregswindle-generator-apiproxy

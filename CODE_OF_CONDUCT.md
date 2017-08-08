@@ -75,6 +75,10 @@ members of the project's leadership.
 This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
 available at [http://contributor-covenant.org/version/1/4][version].
 
+---
+
+Icons by [icons8](https://icons8.com/).
+
 [bad-decision-image]: /docs/img/icons8/bad-decision.png
 [code-of-conduct-image]: /docs/img/icons8/code-of-conduct.png
 [good-decision-image]: /docs/img/icons8/good-decision.png
