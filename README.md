@@ -418,15 +418,18 @@ test(<scope>): <subject>
 
 ![Documentation](/docs/img/icons8/markdown.png)
 
-Your repository's `README.md` is your product's home page for consumers and contributors. According to [GitHub's 2017 Open Source Survey][github-open-source-survey-2017-url]:
+Your repository's `README.md` is your product's home page for consumers and contributors. Like any other Web page, the success of your product hinges on converting visitors to consumers or contributors.
 
-  > ![Quote][quote-img] Documentation is highly valued, but often overlooked.
-  >
-  > Documentation helps orient newcomers: how to use a project, how to contribute back, the terms of use and contribution, and the standards of conduct in a community. Improving that documentation is an impactful way to contribute back to open source.
-  >
-  > Open Source Survey. (n.d.). Retrieved August 07, 2017, from http://opensourcesurvey.org/2017/
+* Use this [template](./README.sample.md) for your `README.md`. Feel free to add missing sections or remove unnecessary sections.
 
-* Use this [template](./README.sample.md) for `README.md`. Feel free to add missing sections or remove unnecessary sections.
+  _Why_:
+  > According to [GitHub's 2017 Open Source Survey][github-open-source-survey-2017-url]:
+  >
+  >> ![Quote][quote-img] Documentation is highly valued, but often overlooked.
+  >>
+  >> Documentation helps orient newcomers: how to use a project, how to contribute back, the terms of use and contribution, and the standards of conduct in a community. Improving that documentation is an impactful way to contribute back to open source.
+  >>
+  >> Open Source Survey. (n.d.). Retrieved August 07, 2017, from http://opensourcesurvey.org/2017/
 
 * Display the status of your product with badges that link to their respective CI-service's results.
 
@@ -684,8 +687,6 @@ Your repository's `README.md` is your product's home page for consumers and cont
 <a name="code-style"></a>
 ## 7. Code style
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
 <a name="code-style-check"></a>
 ### 7.1 Some code style guidelines
 
@@ -694,7 +695,7 @@ Your repository's `README.md` is your product's home page for consumers and cont
     _Why:_
     > This is all up to you. We use transpilers to use advantages of new syntax. stage-2 is more likely to eventually become part of the spec with only minor revisions.
 
-* Include code style check in your build process.
+* Include a code style check in your build process.
 
     _Why:_
     > Breaking your build is one way of enforcing code style to your code. It prevents you from taking it less seriously. Do it for both client and server-side code. [read more...](https://www.robinwieruch.de/react-eslint-webpack-babel/)
@@ -704,12 +705,7 @@ Your repository's `README.md` is your product's home page for consumers and cont
     _Why:_
     > We simply prefer `eslint`, you don't have to. It has more rules supported, the ability to configure the rules, and ability to add custom rules.
 
-* We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) for JavaScript, [Read more](https://www.gitbook.com/book/duk/airbnb-javascript-guidelines/details). Use the javascript style guide required by the project or your team.
-
-* We use [Flow type style check rules for ESLint](https://github.com/gajus/eslint-plugin-flowtype) when using [FlowType](https://flow.org/).
-
-    _Why:_
-    > Flow introduces few syntaxes that also need to follow certain code style and be checked.
+* [![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard) We use [Standard JavaScript Style](https://github.com/feross/standard) for JavaScript. Use the javascript style guide required by the project or your team.
 
 * Use `.eslintignore` to exclude file or folders from code style check.
 
