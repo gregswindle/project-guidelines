@@ -2,41 +2,61 @@
 > [![PRs Welcome][makeapullrequest-image]][makeapullrequest-url] Contributions are stories with a beginning, a middle, and an end, all told through issues, comments, commit logs, and pull requests.
 
 ## 1. Table of contents
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [1. Table of contents](#1-table-of-contents)
-- [2. "User Story" issues and defects](#2-user-story-issues-and-defects)
+<!-- toc -->
+
+- [1. "User Story" issues and defects](#1-user-story-issues-and-defects)
+- [2. Issue labels](#2-issue-labels)
+  * [2.1. Priority labels](#21-priority-labels)
+  * [2.2. Status labels](#22-status-labels)
+  * [2.3. Type labels](#23-type-labels)
+  * [2.4. Contributor License Agreement (CLI) labels](#24-contributor-license-agreement-cli-labels)
 - [3. Topic branches](#3-topic-branches)
 - [4. Pull requests (PRs)](#4-pull-requests-prs)
 - [5. `conventional commit messages` and change `types`](#5-conventional-commit-messages-and-change-types)
-	- [5.1. `build` commit messages](#51-build-commit-messages)
-	- [5.2. `chore` commit messages](#52-chore-commit-messages)
-	- [5.3. `ci` commit messages](#53-ci-commit-messages)
-	- [5.4. `docs` commit messages](#54-docs-commit-messages)
-	- [5.5. `feat` (feature) commit messages](#55-feat-feature-commit-messages)
-	- [5.6. `fix` commit messages](#56-fix-commit-messages)
-	- [5.7. `perf` (performance) commit messages](#57-perf-performance-commit-messages)
-	- [5.8. `refactor` commit messages](#58-refactor-commit-messages)
-	- [5.9. `revert` commit messages](#59-revert-commit-messages)
-	- [5.10. `style` commit messages](#510-style-commit-messages)
-	- [5.11. `test` commit messages](#511-test-commit-messages)
+  * [5.1. `build` commit messages](#51-build-commit-messages)
+  * [5.2. `chore` commit messages](#52-chore-commit-messages)
+  * [5.3. `ci` commit messages](#53-ci-commit-messages)
+  * [5.4. `docs` commit messages](#54-docs-commit-messages)
+  * [5.5. `feat` (feature) commit messages](#55-feat-feature-commit-messages)
+  * [5.6. `fix` commit messages](#56-fix-commit-messages)
+  * [5.7. `perf` (performance) commit messages](#57-perf-performance-commit-messages)
+  * [5.8. `refactor` commit messages](#58-refactor-commit-messages)
+  * [5.9. `revert` commit messages](#59-revert-commit-messages)
+  * [5.10. `style` commit messages](#510-style-commit-messages)
+  * [5.11. `test` commit messages](#511-test-commit-messages)
 - [6. Development](#6-development)
-	- [6.1. Code standards](#61-code-standards)
-	- [6.2. Testing](#62-testing)
+  * [6.1. Code standards](#61-code-standards)
+  * [6.2. Testing](#62-testing)
+      - [:100: Write specs (i.e., unit tests).](#100-write-specs-ie-unit-tests)
 - [7. Contributors](#7-contributors)
 
-<!-- /TOC -->
+<!-- tocstop -->
 
-## 2. "User Story" issues and defects
+<!-- tocend -->
+
+## 1. "User Story" issues and defects
 > [Submit a new issue][issues-new-url] or [assign yourself an open issue][issues-url] to begin collaboration.
 
 Contributions start with clear communication, and issues – not e-mails! – are the best way to collaborate with colleagues.
+
+## 2. Issue labels
+
+In his article ["Sane GitHub Labels,"](https://medium.com/@dave_lunny/sane-github-labels-c5d2e6004b63) Dave Lunny advocates a standard set of issue labels prefixed by type. His `Node.js` package `git-labelmaker` simplifies standardization with a CLI app that adds and removes repository labels. We have adapted his labels to match our commit message guidelines.
+
+### 2.1. Priority labels
+
+### 2.2. Status labels
+
+### 2.3. Type labels
+
+### 2.4. Contributor License Agreement (CLI) labels
 
 ## 3. Topic branches
 
 We use "topic" branches to allow for parallel product development. Once you've committed to working on an issue, follow these steps.
 
-> ##### :information_source: Valid branch prefix names
+> :information_source: Valid branch prefix names
 >
 > Topic branches must start with either one of the conventional commit types or a valid Bitbucket branch prefix.
 
@@ -97,7 +117,7 @@ The following branch prefixes are allowed.
 
 4.2. Follow the instructions in the pull request template and submit it.
 
-> #### :raising_hand: Working on your first Pull Request?
+> :raising_hand: Working on your first Pull Request?
 >
 > You can learn how from this *free* series
 > [How to Contribute to an Open Source Project on GitHub][pr-course-url].
@@ -113,7 +133,6 @@ This project enforces [AngularJS Git Commit Guidelines][git-commit-guidelines-ur
 Issues related to product builds. The AngularJS Git commit message format is
 
 ```
-
 build(<scope>): <subject>
 <BLANK LINE>
 <[body]>
@@ -126,7 +145,6 @@ build(<scope>): <subject>
 Issues related to miscellaneous non-functional changes (usually "maintenance" changes). The AngularJS Git commit message format is
 
 ```
-
 chore(<scope>): <subject>
 <BLANK LINE>
 <[body]>
@@ -139,7 +157,6 @@ chore(<scope>): <subject>
 Issues related to continuous integration, delivery, and deployment tasks. The AngularJS Git commit message format is
 
 ```
-
 ci(<scope>): <subject>
 <BLANK LINE>
 <[body]>
@@ -152,7 +169,6 @@ ci(<scope>): <subject>
 Issues related to documentation. The AngularJS Git commit message format is
 
 ```
-
 docs(<scope>): <subject>
 <BLANK LINE>
 <[body]>
@@ -165,7 +181,6 @@ docs(<scope>): <subject>
 New feature or enhancement requests. The AngularJS Git commit message format is
 
 ```
-
 feat(<scope>): <subject>
 <BLANK LINE>
 <[body]>
@@ -178,7 +193,6 @@ feat(<scope>): <subject>
 Defect (bug) repair issues. The AngularJS Git commit message format is
 
 ```
-
 fix(<scope>): <subject>
 <BLANK LINE>
 <[body]>
@@ -191,7 +205,6 @@ fix(<scope>): <subject>
 Performance improvement issues. The AngularJS Git commit message format is
 
 ```
-
 perf(<scope>): <subject>
 <BLANK LINE>
 <[body]>
@@ -204,7 +217,6 @@ perf(<scope>): <subject>
 Source code design **improvements that do not affect product behavior**. The AngularJS Git commit message format is
 
 ```
-
 refactor(<scope>): <subject>
 <BLANK LINE>
 <[body]>
@@ -219,7 +231,6 @@ Tasks that revert to a previous commit hash. Your message should begin with `rev
 In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
 
 ```
-
 revert: <hash>
 <BLANK LINE>
 This reverts commit <hash>.
@@ -232,7 +243,6 @@ This reverts commit <hash>.
 Issues related to style guideline compliance, especially `ESLint` errors and warnings. The AngularJS Git commit message format is
 
 ```
-
 style(<scope>): <subject>
 <BLANK LINE>
 <[body]>
@@ -245,7 +255,6 @@ style(<scope>): <subject>
 Test coverage tasks. The AngularJS Git commit message format is
 
 ```
-
 test(<scope>): <subject>
 <BLANK LINE>
 <[body]>
@@ -270,9 +279,7 @@ Heres' a [table of `product-name's` ESLint rules][eslint-rules-table-url] and th
 Open a terminal and run
 
 ```bash
-
 $ npm test
-
 ```
 
 ## 7. Contributors
