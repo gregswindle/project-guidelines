@@ -418,29 +418,43 @@ test(<scope>): <subject>
 
 ![Documentation](/docs/img/icons8/markdown.png)
 
-Your repository's `README.md` is your product's home page for consumers and contributors. According to [GitHub's 2017 Open Source Survey][github-open-source-survey-2017-url],
+Your repository's `README.md` is your product's home page for consumers and contributors. According to [GitHub's 2017 Open Source Survey][github-open-source-survey-2017-url]:
 
-> ![Quote][quote-img] Documentation is highly valued, but often overlooked.
->
-> Documentation helps orient newcomers: how to use a project, how to contribute back, the terms of use and contribution, and the standards of conduct in a community. Improving that documentation is an impactful way to contribute back to open source.
->
-> Open Source Survey. (n.d.). Retrieved August 07, 2017, from http://opensourcesurvey.org/2017/
+  > ![Quote][quote-img] Documentation is highly valued, but often overlooked.
+  >
+  > Documentation helps orient newcomers: how to use a project, how to contribute back, the terms of use and contribution, and the standards of conduct in a community. Improving that documentation is an impactful way to contribute back to open source.
+  >
+  > Open Source Survey. (n.d.). Retrieved August 07, 2017, from http://opensourcesurvey.org/2017/
 
+* Use this [template](./README.sample.md) for `README.md`. Feel free to add missing sections or remove unnecessary sections.
 
+* Display the status of your product with badges that link to their respective CI-service's results.
 
+  _Why_:
+  > Badges demonstrate your product's health and your team's commitment to evidence-based transparency. The types of badges you display also imply engineering maturity.
 
-* Use this [template](./README.sample.md) for `README.md`, Feel free to add uncovered sections.
+| Badge | Description |
+|:------|-------------|
+| [![Build Status][travis-image]][travis-url] | Latest build results on Linux and macOS |
+| [![Windows Build Status][appveyor-img]][appveyor-url] | Latest build results on Windows |
+| [![codecov](https://codecov.io/gh/gregswindle/generator-apiproxy/branch/master/graph/badge.svg)](https://codecov.io/gh/gregswindle/generator-apiproxy) | Historical code coverage results |
+| [![Quality Gate][codacy-img]](https://www.codacy.com/app/greg_7/generator-apiproxy?utm_source=github.com&utm_medium=referral&utm_content=gregswindle/generator-apiproxy&utm_campaign=Badge_Grade) | Code quality results |
+| [![NSP Status][nsp-img]][nsp-url] | Security vulnerability scan results |
+| [![Dependency Status][daviddm-image]][daviddm-url] | Dependency drift assessment |
+| [![devDependencies Status][daviddm-dev-image]][daviddm-dev-url] | Development dependency drift assessment |
+| [![NPM version][npm-image]][npm-url] | The latest public version of your product |
+| [![License][license-image]][license-url] | Your product's license |
+| [![FOSSA Status][fossa-image]][fossa-url] | Third-party assessment of your product's dependencies' licenses |
+
 * Assess your `README.md`'s quality with [ScoreMe][readme-score-url], and display that score's badge at the bottom of your `README.md` file. [![ScoreMe README.md grade][readme-score-img]][readme-score-url]
 
-  _Why:_
+  _Why_:
   > [ScoreMe][readme-score-url] was created by the CocoaPods dependency management team. It automatically generates a README quality score based on objective factors.
 
 * Prefer a static document site generator (like GitBook or GitHub Pages) to host your documentation with additional features like interactive [RunKit notebooks][runkit-url].
 
-_Why_:
-> Static code samples are essential. Interactive code samples allow potential consumers and collaborators to experiment with your product's code without forcing them to install it, first.
-
-* When using static document sites, add RunKit blocks so consumers and contributors can execute code samples immediately.
+  _Why_:
+  > Static code samples are essential. Interactive code samples allow potential consumers and collaborators to experiment with your product's code without forcing them to install it, first.
 
 * For projects with more than one repository, provide links to them in their respective `README.md` files.
 
@@ -1028,7 +1042,7 @@ For each endpoint explain:
 
 <a name="licensing"></a>
 ## 10. Licensing
-![Licensing](/images/licensing.png)
+![Licensing][osi-logo-image]
 
 Make sure you use resources that you have the rights to use. If you use libraries, remember to look for MIT, Apache or BSD but if you modify them, then take a look into license details. Copyrighted images and videos may cause legal problems.
 
@@ -1043,7 +1057,7 @@ Sources:
 [Apigee](https://apigee.com/about/blog),
 [Wishtack](https://blog.wishtack.com)
 
-Icons by [icons8](https://icons8.com/)
+Icons by [icons8](https://icons8.com/).
 
 
 [atom-ide-image]: /docs/img/icons8/atom-ide.png
@@ -1078,6 +1092,7 @@ Icons by [icons8](https://icons8.com/)
 [github-open-source-survey-2017-url]: http://opensourcesurvey.org/2017/
 [quote-img]: /docs/img/icons8/quote.png
 [runkit-url]: https://runkit.com/
+[osi-logo-image]: /docs/img/icons8/osi-logo.png
 
 
 [api-docs-url]: https://github.com/gregswindle/product-name/docs/API.md
