@@ -1,6 +1,6 @@
 [![Logo of the project][product-logo-image]](README.md)
 
-# Name of the project
+# `product-name`
 
 Display a list of badges&mdash;preferably in this order&mdash;so that consumers and contributors can easily scan the current and historical status of your product.
 
@@ -36,8 +36,6 @@ Install [`markdown-toc`][markdown-toc-url] and automate its execution to keep a 
 - [Contributions](#contributions)
   * [Contributor recognition](#contributor-recognition)
 - [License](#license)
-  * [`product-name's` license](#product-names-license)
-  * [Third-party dependencies' licenses](#third-party-dependencies-licenses)
 
 <!-- tocstop -->
 
@@ -49,13 +47,13 @@ A quick introduction of the minimal setup you need to get a hello world up &
 running.
 
 ```shell
-$ npm install <product-name>
+$ npm install product-name
 ```
 
 If your team prefers Yarn:
 
 ```sh
-$ yarn add <product-name>
+$ yarn add product-name
 ```
 
 Here you should say what actually happens when you execute the code above.
@@ -134,7 +132,7 @@ Use [SemVer](http://semver.org/) for versioning, and declare the latest version 
 
 Finally, link to the Change Log, which describes that features, fixes, and breaking changes introduced over time, with links to their Git commits SHAs.
 
-The latest version of `<product-name>` is `1.0.1`. View the [CHANGELOG][changelog-url] for details.
+The latest version of `product-name` is `1.0.1`. View the [CHANGELOG][changelog-url] for details.
 
 
 ## Configuration
@@ -164,7 +162,7 @@ Documents your database design and schemas, relations etc...
 Contributions are community-driven stories with a beginning, a middle, and an end, all told through issues, comments, and pull requests. If you're interested in collaborating, please review these guidelines:
 
 * [Code of Conduct][code-of-conduct-url]
-* [Contributing][contributing-url] to `<product-name>`
+* [Contributing][contributing-url] to `product-name`
 * [Contributor License Agreement][cla-url]
 * [Product development guidelines][product-development-guidelines-url]
 
@@ -201,15 +199,11 @@ This demonstrates your gratitude and commitment to community growth.
 
 ## License
 
-### `product-name's` license
-
 State what the license is and how to find the text version of the license.
 
 [MIT][license-url] © [Product Owner](https://githbub.com/product-owner)
 
-### Third-party dependencies' licenses
-
-Display the results of your last scan for third-party dependencies included in your product, e.g., from FOSSA.
+Display the results of your last scan for **third-party dependencies** included in your product, e.g., from FOSSA.
 
 ![FOSSA Status][fossa-image-large]
 
