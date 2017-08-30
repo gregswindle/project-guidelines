@@ -2,11 +2,11 @@
 
 # `product-name`
 
-Display a list of badges&mdash;preferably in this order&mdash;so that consumers and contributors can easily scan the current and historical status of your product.
+> ![Delete this instructional comment][comments-delete-image] Display a list of badges&mdash;preferably in this order&mdash;so that consumers and contributors can easily scan the current and historical status of your product. Omit this section if it does not apply.
 
-`<license-badge>`, `<license-scan-results-badge>`, `<product-semantic-version-badge>`
-<br>`<security-vulnerabilities-badge>`, `<product-dependencies-badge>`, `<product-development-dependencies-badge>`
-<br>`<build-status-badge>`, `<code-coverage-badge>`, `<code-quality-badge>`
+`<license-badge>` `<license-scan-results-badge>` `<product-semantic-version-badge>`
+<br>`<security-vulnerabilities-badge>` `<product-dependencies-badge>` `<product-development-dependencies-badge>`
+<br>`<build-status-badge>` `<code-coverage-badge>` `<code-quality-badge>`
 
 > Additional information or tag line.
 
@@ -14,27 +14,30 @@ A brief description of your project, what it is used for.
 
 ## Table of contents
 
-Install [`markdown-toc`][markdown-toc-url] and automate its execution to keep a current table of contents with jump-links.
+> ![Delete this instructional comment][comments-delete-image] Install [`markdown-toc`][markdown-toc-url] and automate its execution to keep a current table of contents with jump-links.
 
 <!-- toc -->
 
 - [Installation / Getting started](#installation--getting-started)
 - [Usage](#usage)
+  * [`feature-one` sample code](#feature-one-sample-code)
+  * [`feature-two` sample code](#feature-two-sample-code)
+  * [`feature-three` sample code](#feature-three-sample-code)
 - [Development](#development)
   * [Built With](#built-with)
   * [Prerequisites](#prerequisites)
   * [Set up a development environment](#set-up-a-development-environment)
+  * [Configuration](#configuration)
+  * [API Reference](#api-reference)
+  * [Data persistence](#data-persistence)
 - [DevSecOps](#devsecops)
   * [Build](#build)
   * [Test](#test)
   * [Deploy/Publish](#deploypublish)
-- [Version and Change Log](#version-and-change-log)
-- [Configuration](#configuration)
 - [Style guide](#style-guide)
-- [API Reference](#api-reference)
-- [Datastore(s)](#datastores)
+- [API Reference](#api-reference-1)
+- [Version and Change Log](#version-and-change-log)
 - [Contributions](#contributions)
-  * [Contributor recognition](#contributor-recognition)
 - [License](#license)
 
 <!-- tocstop -->
@@ -45,6 +48,8 @@ Install [`markdown-toc`][markdown-toc-url] and automate its execution to keep a 
 
 A quick introduction of the minimal setup you need to get a hello world up &
 running.
+
+> ![Delete this instructional comment][comments-delete-image] Replace these instructions with installation procedures applicable to your product.
 
 ```shell
 $ npm install product-name
@@ -60,11 +65,29 @@ Here you should say what actually happens when you execute the code above.
 
 ## Usage
 
-Once installed, describe your product's features and how to use them. __For large products, consider publishing to a static site like GitHub Pages or GitBook.__
+`product-name` allows users to do `feature-one`, `feature-two`, and `feature-three`.
+
+### `feature-one` sample code
+
+```
+
+```
+
+### `feature-two` sample code
+
+```
+
+```
+
+### `feature-three` sample code
+
+```
+
+```
+
 
 ## Development
-
-Provide a link to your [product development guidelines][product-development-guidelines-url].
+> [![PRs Welcome][badge-prs-welcome-image]][badge-prs-welcome-url] Interesting in development contributions? Great! [Check out our Contributing Guidelines][contributing-url] for details.
 
 ### Built With
 
@@ -72,7 +95,7 @@ List main libraries, frameworks used including versions (React, Angular etc.). A
 
 ### Prerequisites
 
-What is needed to set up the dev environment. For instance, global dependencies or any other tools. Provide installation instructions using dependency management tools. (If dependency management is not available, include download links.)
+What is needed to set up the dev environment? For instance, global dependencies or any other tools. Provide installation instructions using dependency management tools. (If dependency management is not available, include download links.)
 
 ### Set up a development environment
 
@@ -86,6 +109,23 @@ packagemanager install
 ```
 
 And state what happens step-by-step. If there is any virtual environment, local server or database feeder needed, explain here.
+
+### Configuration
+
+Here you should write what are all of the configurations a user can enter when using the project.
+
+### API Reference
+
+If your product depends on external APIs, link to the API documentation.
+
+If your product **is an API or micro-service** itself, link to its OpenAPI/Swagger specification.
+
+### Data persistence
+
+Explain what database/datastore (and version) is used (if any). Provide
+
+ * Download links,
+ * Datastore design and schemas, relations etc...
 
 ## DevSecOps
 
@@ -126,49 +166,37 @@ packagemanager deploy your-project -s server.com -u username -p password
 
 And again you'd need to tell what the previous code actually does.
 
-## Version and Change Log
-
-Use [SemVer](http://semver.org/) for versioning, and declare the latest version here. For the versions available, see the [link to tags on this repository](/tags).
-
-Finally, link to the Change Log, which describes that features, fixes, and breaking changes introduced over time, with links to their Git commits SHAs.
-
-The latest version of `product-name` is `1.0.1`. View the [CHANGELOG][changelog-url] for details.
-
-
-## Configuration
-
-Here you should write what are all of the configurations a user can enter when
-using the project.
-
 ## Style guide
 
-Explain your code style and show how validate and fix non-compliant source code with `ESLint`.
+Explain your code style and show how to validate and fix non-compliant source code.
 
 ## API Reference
 
 If your product depends on external APIs, link to the API documentation.
 
-If your product **is an API or micro-service**, link to its OpenAPI specification.
+If your product **is an API or micro-service** itself, link to its OpenAPI/Swagger specification.
 
-## Datastore(s)
+## Version and Change Log
 
-Explain what database (and version) has been used. Provide download links.
-Documents your database design and schemas, relations etc...
+ Link to your version specification. If you don't have formal specification, use [Semantic Versioning][semver-url], and declare the latest version here. For the versions available, see the [link to tags on this repository](/tags).
+
+ Finally, link to the Change Log, which describes that features, fixes, and breaking changes introduced over time, with links to their Git commits SHAs.
+
+ The latest version of `product-name` is `0.0.0`. View the [CHANGELOG][changelog-url] for details.
 
 ## Contributions
 
-![Alt text](https://camo.githubusercontent.com/f96261621753dacf526590825b84f87ccb1db0e6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5052732d77656c636f6d652d627269676874677265656e2e7376673f7374796c653d666c6174 "Pull Request") We welcome contributors and pull requests!
+[![PRs Welcome][badge-prs-welcome-image]][badge-prs-welcome-url] We welcome contributors and pull requests!
 
 Contributions are community-driven stories with a beginning, a middle, and an end, all told through issues, comments, and pull requests. If you're interested in collaborating, please review these guidelines:
 
 * [Code of Conduct][code-of-conduct-url]
 * [Contributing][contributing-url] to `product-name`
 * [Contributor License Agreement][cla-url]
-* [Product development guidelines][product-development-guidelines-url]
 
-### Contributor recognition
+**Contributor recognition**
 
-Contributing to an open source product can be intimidating, and requires our most precious resource: time. Use a tool like [`all-contributors-cli`][all-contributors-cli-url] to automatically generate a table of contributors by name and contribution.
+Use a tool like [`all-contributors-cli`][all-contributors-cli-url] to automatically generate a table of contributors by name and contribution.
 
 Contributions come in many forms, including:
 
@@ -199,21 +227,29 @@ This demonstrates your gratitude and commitment to community growth.
 
 ## License
 
-State what the license is and how to find the text version of the license.
+State what the license (if any) is and how to find the text version of the license.
 
-[MIT][license-url] © [Product Owner](https://githbub.com/product-owner)
+[License name][license-url] © [Product Owner][contact-primary-url].
 
-Display the results of your last scan for **third-party dependencies** included in your product, e.g., from FOSSA.
+Display the results of your last scan for **third-party dependencies** included in your product, e.g., from FOSSA. Delete this part if it's unavailable.
 
 ![FOSSA Status][fossa-image-large]
 
+
 [all-contributors-cli-url]: https://github.com/kentcdodds/all-contributors
+[badge-prs-welcome-image]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+[badge-prs-welcome-url]: http://makeapullrequest.com
 [changelog-url]: ./CHANGELOG.md
 [cla-url]: https://www.clahub.com/agreements/gregswindle/open-api-archetypes
 [code-of-conduct-url]: ./CODE_OF_CONDUCT.md
+[comments-delete-image]: /docs/img/icons8/comments-delete-50.png
+[contact-primary-email]: some.body@example.com
+[contact-primary-url]: https://example.com/contact
 [contributing-url]: ./CONTRIBUTING.md
 [fossa-image-large]: https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Forganization%2Frepo-name.svg?type=large
+[icon-info-25-image]: /docs/img/icons8/info-icon-25.png
 [license-url]: ./LICENSE
 [markdown-toc-url]: https://github.com/jonschlinkert/markdown-toc
 [product-development-guidelines-url]: /docs/product-development-guidelines/js/PRODUCT_DEVELOPEMENT_GUIDELINES.md
 [product-logo-image]: /docs/img/logo.sample.png
+[semver-url]: http://semver.org/

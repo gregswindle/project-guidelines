@@ -1,6 +1,6 @@
 ![JavaScript][javascript-logo]
 
-# Product Development Guidelines &middot; [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+# Contributing to `product-name` &middot; [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 > Delivering valuable, high-quality products is challenging, and requires focused attention and clear communication.
 Well-defined, evidence-based guidelines are therefore vital for effective collaboration. The following guidelines are based
 on years of experience and retrospectives, but that doesn't make them sacred scripture! In the spirit of continuous improvement,
@@ -10,9 +10,9 @@ always feel free to suggest new guidelines and to challenge existing norms with 
 
 <!-- toc -->
 
-- [1. Git](#1-git)
-  * [1.1. How to collaborate with Git](#11-how-to-collaborate-with-git)
-    + [1.1.1. Perform work in a topic branch.](#111-perform-work-in-a-topic-branch)
+- [1. Git for contributors](#1-git-for-contributors)
+  * [1.1. How to contribute with Git](#11-how-to-contribute-with-git)
+    + [1.1.1. Work in a topic branch.](#111-work-in-a-topic-branch)
     + [1.1.2. Branch out from `develop`.](#112-branch-out-from-develop)
     + [1.1.3. Never push into `develop` or `master` branch. Submit a Pull Request.](#113-never-push-into-develop-or-master-branch-submit-a-pull-request)
     + [1.1.4. Submit a Pull Request as soon as possible.](#114-submit-a-pull-request-as-soon-as-possible)
@@ -21,9 +21,17 @@ always feel free to suggest new guidelines and to challenge existing norms with 
     + [1.1.7. Ensure your topic branch's CI-service checks pass before you ask others to review a Pull Request.](#117-ensure-your-topic-branchs-ci-service-checks-pass-before-you-ask-others-to-review-a-pull-request)
     + [1.1.8. Add Reviewers and the Label "Status: Review Needed" when your topic branch is ready for review.](#118-add-reviewers-and-the-label-status-review-needed-when-your-topic-branch-is-ready-for-review)
     + [1.1.9. Delete local and remote topic branches after merging.](#119-delete-local-and-remote-topic-branches-after-merging)
-    + [1.1.10. Use [this](./.gitignore) `.gitignore` file.](#1110-use-thisgitignore-gitignore-file)
+    + [1.1.10. Use a `.gitignore` file.](#1110-use-a-gitignore-file)
     + [1.1.11. Protect your `develop` and `master` branches.](#1111-protect-your-develop-and-master-branches)
-  * [1.2. Git workflow](#12-git-workflow)
+- [2. Git for product owners](#2-git-for-product-owners)
+    + [1.2.1. Git enables collaborative process models](#121-git-enables-collaborative-process-models)
+    + [2.1.1. Step 1: Moderate change with topic `branches`](#211-step-1-moderate-change-with-topic-branches)
+    + [2.1.3. Pushing changes and Pull Requests (PRs)](#213-pushing-changes-and-pull-requests-prs)
+    + [2.1.4. Enhanced user-experience with GitHub](#214-enhanced-user-experience-with-github)
+    + [2.1.5. PR approvals and merges](#215-pr-approvals-and-merges)
+    + [2.1.6. Release management](#216-release-management)
+  * [2.2. How to choose the "right" contribution workflow](#22-how-to-choose-the-right-contribution-workflow)
+    + [2.2.1. Git Feature Branch model](#221-git-feature-branch-model)
     + [1.2.1. Initializing a new product repository](#121-initializing-a-new-product-repository)
       - [1.2.1.1. Create an empty directory](#1211-create-an-empty-directory)
       - [1.2.1.2. Initialize a git repository in the product directory.](#1212-initialize-a-git-repository-in-the-product-directory)
@@ -68,134 +76,49 @@ always feel free to suggest new guidelines and to challenge existing norms with 
 
 <!-- tocend -->
 
-<a name="git"></a>
-## 1. Git for contributors
-![Git][git-logo-image]
-
-### 1.1. How to contribute with Git
-
-Git is a collaboration tool that allows self-directed teams to govern product development with team members anywhere in the world.
-
-__If your product development team cannot clearly articulate its preferred branching model and how to use it, your team is not ready to open source its product.__
-
-#### 1.1.1. Work in a topic branch.
-
-_Why:_
-> Use an isolated topic branch for parallel product development. Topic branches allow you to submit multiple pull requests without confusion. You can iterate without polluting the master branch with potentially unstable, unfinished code. Use either the
-> * [Feature Branch Workflow][feature-branch-workflow-url] for small-ish codebases, or
-> * [Gitflow Workflow][gitflow-workflow-url] for large applications and monoliths
-
-#### 1.1.2. Branch out from `develop`.
-
-_Why:_
-> ![Git fork][git-fork-image] This way, you can make sure that code in `master` will almost always build without problems, and can be mostly used directly for releases (this might be overkill for some projects).
-
-#### 1.1.3. Never push into `develop` or `master` branch. Submit a Pull Request.
-
-_Why:_
-> ![Git forbidden][git-no-entry-image] It notifies team members that they have completed a feature. It also enables easy peer-review of the code and dedicates forum for discussing the proposed feature.
-
-#### 1.1.4. Submit a Pull Request as soon as possible.
-
-_Why:_
-> ![Git pull request][git-pull-request-image] Pull Requests declare work in progress. Frequent pushes to a Pull Request notify your team members about change, and gives them the opportunity to provide feedback more often. Pull Request pushes also trigger automated CI-services, which help you fail fast and assess quality.
-
-#### 1.1.5. Update your local `develop` branch with an interactive rebase before you ask for Pull Request approvals.
-
-_Why:_
-> ![Git compare][git-compare-image] Rebasing will merge in the requested branch (`master` or `develop`) and apply the commits that you have made locally to the top of the history without creating a merge commit (assuming there were no conflicts). Resulting in a nice and clean history.
->
-> [Learn more: "Merging vs. Rebasing"...](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
-
-#### 1.1.6. Resolve rebase conflicts before Pull Request reviews.
-
-_Why:_
-> ![Git compare][git-resolve-image] Rebasing will merge in the requested branch (`master` or `develop`) and apply the commits that you have made locally to the top of t
-
-#### 1.1.7. Ensure your topic branch's CI-service checks pass before you ask others to review a Pull Request.
-
- _Why:_
- > ![CI build success][travis-ci-logo-image] You are about to add your code to a stable branch. If your feature-branch tests fail, there is a high chance that your destination branch build will fail too. Additionally you need to apply code style check before making a Pull Request. It aids readability and reduces the chance of formatting fixes being mingled in with actual changes.
-
-#### 1.1.8. Add Reviewers and the Label "Status: Review Needed" when your topic branch is ready for review.
-
-_Why:_
-> ![Git pull request review][git-pr-review-image] When you add a Reviewer, GitHub (or Bitbucket) notifies teammates that your topic branch meets all Acceptance Criteria and is ready to be merged into the main branch. Adding the label "Status: Review Needed" formally declares the status of your topic branch, and helps teams filter through issues.
-
-#### 1.1.9. Delete local and remote topic branches after merging.
-
-_Why:_
-> ![Delete branches][git-branch-delete-image] Topic branches should only exist while the work is still in progress. Merged topic branches clutter up your list of branches with dead branches. Topic branch deletion also insures that you only ever merge back into `master` or `develop` once.
-
-#### 1.1.10. Use a `.gitignore` file.
-
-_Why:_
-> ![Ignore extraneous files][git-ignore-image] It already has a list of system files that should not be sent with your code into a remote repository. In addition, it excludes setting folders and files for most used editors, as well as most common dependency folders.
->
-> [Create a custom `.gitignore` on gitignore.io](https://gitignore.io)
-
-#### 1.1.11. Protect your `develop` and `master` branches.
-
-_Why:_
-> ![Git repo defense][git-repo-protection-image] Branch protection prevents production-ready branches from incorporating unexpected and irreversible changes. Learn more about
-> * [GitHub protected branches](https://help.github.com/articles/about-protected-branches/) and
-> * [Bitbucket protected branches](https://confluence.atlassian.com/bitbucketserver/using-branch-permissions-776639807.html).
-
-## 2. Git for product owners
-
+## How Git enables collaborative communities
 > ![Quote][quote-img] Changing the process of making software has sometimes been some of the most painful parts of software development (because we so easily get used to certain models), but that has also often been the most rewarding parts. It is, after all, why “git” came to be, for example. And I think open source in general is obviously just another “process model” change that I think is very successful.
 >
 > Merrill, S. (2012, April 19). An Interview With Linus Torvalds. Retrieved August 26, 2017, from https://techcrunch.com/2012/04/19/an-interview-with-millenium-technology-prize-finalist-linus-torvalds/
 
-#### 1.2.1. Git enables collaborative process models
-
-![Community][user-groups-image]
+#### Git offers structured collaborative process models
 
 Git is a __collaboration tool__ that grants people the opportunity to contribute to software products using simple and consistent process models called __workflows__.
 
-#### 2.1.1. Step 1: Moderate change with topic `branches`
-
-![Git fork][git-fork-image]
+#### Introducing change with topic `branches`
 
 Git workflows begin with __cloning__ a __repository__, which __pulls__ a duplicate of the _entire_ codebase onto a local computer. Contributors then create a local __topic branch__ in which they introduce changes&mdash;features, fixes, documentation, tests, and design improvements&mdash;which allows others to develop in parallel.
 
-#### 2.1.3. Pushing changes and Pull Requests (PRs)
-
-![Git pull request][git-pull-request-image]
+#### Pushing changes and Pull Requests (PRs)
 
 Contributors __push__ their topic branch to others (usually another repository called `origin`) and submit  __pull requests (PRs)__ to their announce their changes. Pull requests are central to almost all Git workflows, since PRs allow Product Owners and their community to review suggested modifications. Product owners can approve or reject PRs at any time.
 
-#### 2.1.4. Enhanced user-experience with GitHub
+> **Enhanced user-experience with GitHub**
+>
+> GitHub augments the pull request's user-experience with workflow enhancements like:
+>
+> * Comments for threaded conversations;
+> * Issue, Milestone, and Project integration;
+> * "Gists" for sharing code "snippets"; and
+> * __Status checks__ that automate __continuous integration (CI)__ services like
+>    * Builds,
+>    * Vulnerability and dependency drift analyses,
+>    * Unit and functional testing,
+>    * Code coverage reporting,
+>    * Code-standards and legal compliance assessments,
+>    * Product documentation ratings,
+>    * API document generation, and
+>    * Many other workflow improvement tools in the [GitHub Marketplace][github-marketplace-url].
 
-![GitHub Octocat][gh-octocat-image]
-
-GitHub augments the pull request's user-experience with workflow enhancements like:
-
-* Comments for threaded conversations;
-* "Gists" for sharing code "snippets"; and
-* __Status checks__ that automate __continuous integration (CI)__ services like
-    * Builds,
-    * Vulnerability and dependency drift analyses,
-    * Unit and functional testing,
-    * Code coverage reporting,
-    * Code-standards and legal compliance assessments,
-    * Product documentation ratings,
-    * API document generation, and
-    * Many other workflow improvement tools in the [GitHub Marketplace][github-marketplace-url].
-
-#### 2.1.5. PR approvals and merges
-
-![PR approval and merge][git-merge-approval-image]
+#### Approving and merging changes with pull requests
 
 When the community and product owner agree to a changes in PR, that PR's topic branch is __merged__ into the repository's main branch, which is usually called either `develop` or `master`. During a merge, conflicts are resolved when they occur. Once merged and tested, the PR's `topic branch` is deleted and the PR is "closed."
 
-#### 2.1.6. Release management
+#### Managing releases
 
-![Launch!][spaceship-launch-image]
+Ultimately the merged changes are __released__ to consumers with a new product revision. Releases also include important artifacts like **CHANGELOGs**, which keep a running summary of product's features, fixes, and breaking changes introduced over time.
 
-Ultimately the merged changes are publicly __released__ with a new product revision. Releases also include important artifacts like **CHANGELOGs**, which keep a running summary of product's features, fixes, and breaking changes introduced over time.
-
-### 2.2. How to choose the "right" contribution workflow
+### How to choose the "right" contribution workflow
 
 Before you open-source your software, you need to select a __contribution workflow__ and follow [recommended community standards][open-source-guides-url] to communicate your workflow with a:
 
@@ -208,11 +131,92 @@ These documents are essential for [building a strong community][gh-building-stro
 
 Since Git manages change with `branches` and `Pull Requests`, Git workflows are basically process models for reviewing, discussing, approving, and merging `branches`. Git users therefore refer to their change control processes as __branching models__. For open source products that use Git, the branching model _is_ the change control model.
 
-#### 2.2.1. Git Feature Branch model
+Selecting a Git collaboration workflow depends on the complexity of your product. Here are the most popular (and well-documented) workflows.
 
-> ![Git forbidden][git-no-entry-image] __If your product development team cannot clearly articulate its preferred branching model and how to use it, your team is not ready to open source its product.__
+#### `Feature-branch-workflow`
 
-Because of most of the reasons above, we use [Feature-branch-workflow](https://www.atlassian.com/git/tutorials/comparing-workflows#feature-branch-workflow) with [Interactive Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing#the-golden-rule-of-rebasing) and some elements of [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow) (naming and having a develop branch). The main steps are as follow:
+The [Feature-branch-workflow](https://www.atlassian.com/git/tutorials/comparing-workflows#feature-branch-workflow) is good for simple to moderately complex products. Products like libraries, modules, and even some micro-services benefit from the `feature-branch-workflow's` simplicity. Even [technically sophisticated software products][eslint-developer-guide-url] use the feature-branch-workflow as long as they're loosely-coupled and well-documented.
+
+#### `Gitflow`
+
+[Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow) builds on the `feature-branch-workflow` by adding `develop` and `release` branches, which allows teams to:
+     * Add net-new features by branching from `develop`
+     * Address emergency defects by branching from `master`
+     * Manage `releases` without affecting development.
+    `Gitflow` works well for large products (i.e, "monolithic applications"), but it's harder to manage.
+
+#### Forking Workflow
+
+The `forking workflow` focus on _where_ contributors pull and work on your product's source code. Instead of pulling from and pushing to a single, "central" repository, the `forking workflow` creates a copy of the original repository and hosts that copy under another user account, organization, or project. This allows contributors to create topic branches and submit pull requests to _their own repository_ instead of your yours.
+
+`Forking workflows` still use either a `feature-branch-workflow` or `Gitflow`; the difference has to do with "who" hosts the repository.
+
+## Contribute to `product-name` with Git
+![Git][git-logo-image]
+
+### Work in a topic branch.
+
+_Why:_
+> Use an isolated topic branch for parallel product development. Topic branches allow you to submit multiple pull requests without confusion. You can iterate without polluting the master branch with potentially unstable, unfinished code. The `product-name` team uses:
+> * [Feature Branch Workflow][feature-branch-workflow-url] for small-ish codebases, or
+> * [Gitflow Workflow][gitflow-workflow-url] for large applications and monoliths
+
+#### Branch out from `master`. (_Use this header if you use the `feature-branch-workflow`._)
+#### Branch out from `develop`. (_Use this header if you use `Gitflow`._)
+
+_Why:_
+> This way, you can make sure that code in `master` will almost always build without problems, and can be mostly used directly for releases (this might be overkill for some projects).
+
+#### Never push into `develop` or `master` branch. Submit a Pull Request.
+
+_Why:_
+> It notifies team members that they have completed a feature. It also enables easy peer-review of the code and dedicates forum for discussing the proposed feature.
+
+#### Submit a Pull Request as soon as possible.
+
+_Why:_
+> Pull Requests declare work in progress. Frequent pushes to a Pull Request notify your team members about change, and gives them the opportunity to provide feedback more often. Pull Request pushes also trigger automated CI-services, which help you fail fast and assess quality.
+
+#### 1.1.5. Update your local `develop` OR `master` branch with an interactive rebase before you ask for Pull Request approvals.
+
+_Why:_
+> Rebasing will merge in the requested branch (`master` or `develop`) and apply the commits that you have made locally to the top of the history without creating a merge commit (assuming there were no conflicts). Resulting in a nice and clean history.
+>
+> [Learn more: "Merging vs. Rebasing"...](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
+
+#### Resolve rebase conflicts before Pull Request reviews.
+
+_Why:_
+> Rebasing will merge in the requested branch (`master` or `develop`) and apply the commits that you have made locally to the top of t
+
+#### Ensure your topic branch's CI-service checks pass before you ask others to review a Pull Request.
+
+ _Why:_
+ > You are about to add your code to a stable branch. If your feature-branch tests fail, there is a high chance that your destination branch build will fail too. Additionally you need to apply code style check before making a Pull Request. It aids readability and reduces the chance of formatting fixes being mingled in with actual changes.
+
+#### Add Reviewers when your topic branch is ready for review.
+
+_Why:_
+> When you add a Reviewer, GitHub (or Bitbucket) notifies teammates that your topic branch meets all Acceptance Criteria and is ready to be merged into the main branch. Adding the label "Status: Review Needed" formally declares the status of your topic branch, and helps teams filter through issues.
+
+#### Delete local and remote topic branches after merging.
+
+_Why:_
+> Topic branches should only exist while the work is still in progress. Merged topic branches clutter up your list of branches with dead branches. Topic branch deletion also insures that you only ever merge back into `master` or `develop` once.
+
+#### Use a `.gitignore` file.
+
+_Why:_
+> It already has a list of system files that should not be sent with your code into a remote repository. In addition, it excludes setting folders and files for most used editors, as well as most common dependency folders.
+>
+> [Create a custom `.gitignore` on gitignore.io](https://gitignore.io)
+
+#### Protect your `develop` and/or `master` branches.
+
+_Why:_
+> Branch protection prevents production-ready branches from incorporating unexpected and irreversible changes. Learn more about
+> * [GitHub protected branches](https://help.github.com/articles/about-protected-branches/) and
+> * [Bitbucket protected branches](https://confluence.atlassian.com/bitbucketserver/using-branch-permissions-776639807.html).
 
 #### 1.2.1. Initializing a new product repository
 
@@ -1295,3 +1299,4 @@ Icons by [icons8](https://icons8.com/).
 [travis-image]: https://travis-ci.org/gregswindle/product-name.svg?branch=master
 [travis-url]: https://travis-ci.org/gregswindle/product-name
 [user-groups-image]: /docs/img/icons8/user-groups.png
+[eslint-developer-guide-url]: https://eslint.org/docs/developer-guide/architecture
